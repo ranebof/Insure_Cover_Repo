@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter:wght@300&family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.HeaderMain {
+  width: 100vw;
+  height: 16.7vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+}
+.logo_container {
+  width: auto;
+  height: auto;
+  margin-left: 8.49vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+}
+#Logo {
+  width: 2vw;
+  height: 5.5vh;
+}
+.logo_text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 4.5vh;
+  margin-left: 0.932vw;
+}
+.right_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+  width: auto;
+  height: auto;
+  margin-left: 50.052vw;
+}
+.login_text_r {
+  color: #09a144;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2vh;
+  font-weight: 500;
+}
+.block_r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-flow: column nowrap;
+  width: 7.969vw;
+  height: 4.7vh;
+  color: #09a144;
+  border: 0.3vh solid #09a144;
+  border-radius: 1.2vh;
+  margin-left: 1.563vw;
+}
+.register_text_r {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.05vh;
+  font-weight: 200;
+}
+.circle_r {
+  width: 4vw;
+  height: 8vh;
+  border-radius: 100%;
+  margin-left: 1.615vw;
+  border: 0.1vh solid #000;
+}

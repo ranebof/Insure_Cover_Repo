@@ -1,11 +1,13 @@
 import './App.css';
+import Header from './components/MainHeader/header';
+import Footer from './components/MainFooter/footer';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-     
+    <div className="Main">
+      <Header />
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
