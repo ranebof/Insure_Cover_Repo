@@ -4,28 +4,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 .footer-cont {
   width: 100vw;
-  height: 25vh;
-  position: absolute;
-  bottom: 0;
+  height: 13vh;
+  margin-top: 2vh;
   display: flex;
   justify-content: center;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
 }
 .content {
-  width: 80%;
-  height: 100%;
-  margin-top: 2%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .content h2 {
   color: #343434;
   font-weight: 300;
-  line-height: 20px;
 }
 #logo {
   width: 50px;
   height: 50px;
+  position: absolute;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 0.1vh;
+  background-color: #fff;
+}
+.content-items-cont {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.content-item {
+  display: flex;
+  flex-direction: column;
+}
+.content-item h4 {
+  color: #343434;
+  font-weight: 300;
+}
+.header-items-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.buttons-cont {
+  display: flex;
+  width: 11vw;
+  height: 11vh;
+  margin-right: -4.5vw;
+}
+.buttons-cont button {
+  background-color: #343434;
+  border-radius: 50%;
+  width: 2vw;
+  height: 4vh;
+  margin-right: 1vw;
+}
+.policy-cont {
+  display: flex;
+  width: 80vw;
+  justify-content: space-around;
+}
+.privacy {
+  display: flex;
+  width: 20vw;
+  justify-content: space-around;
 }

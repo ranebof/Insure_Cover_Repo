@@ -1,25 +1,67 @@
 @import '../../mixinspack/mixins.styl'
 
 .footer-cont
-    sizer(100vw,25vh)
-    position:absolute;
-    bottom:0
+    sizer(100vw,13vh)
+    margin-top: 2vh
     display: flex;
     justify-content: center
-    border-top: 2px solid black  
-    border-bottom: 2px solid black  
-
 .content
-    sizer(80%,100%)
-    margin-top:2%
-    display:flex
-    flex-direction: row
-    justify-content: space-around
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
 
 .content h2
     color:#343434
     font-weight: 300
-    line-height: 20px
 
 #logo
     sizer(50px,50px)
+    position: absolute
+
+.content-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    height:0.1vh
+    background-color:white
+
+.content-items-cont
+    display: flex
+    flex-direction: row
+    width: 100%;
+    justify-content: space-around;
+
+.content-item
+    display: flex
+    flex-direction: column
+    
+.content-item h4
+    color:#343434
+    font-weight: 300
+
+.header-items-cont
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:100%;
+
+.buttons-cont
+    display: flex;
+    sizer(11vw,11vh)
+    margin-right:-4.5vw
+
+.buttons-cont button
+    background-color: #343434
+    border-radius: 50%
+    sizer(2vw,4vh)    
+    margin-right:1vw
+
+.policy-cont
+    display: flex
+    width 80vw
+    justify-content: space-around    
+
+.privacy
+    display: flex
+    width:20vw
+    justify-content: space-around    

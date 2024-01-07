@@ -3,9 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter:wght@300&family=Noto+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 .HeaderMain {
-  width: 100vw;
-  height: 16.7vh;
-  background-color: #fff;
+  width: 100%;
+  height: 12vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -23,12 +22,12 @@
   flex-flow: row wrap;
 }
 #Logo {
-  width: 2vw;
-  height: 5.5vh;
+  width: 1.5vw;
+  height: 4.3vh;
 }
 .logo_text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 4.5vh;
+  font-size: 3vh;
   margin-left: 0.932vw;
 }
 .right_container {
@@ -39,12 +38,12 @@
   flex-flow: row wrap;
   width: auto;
   height: auto;
-  margin-left: 50.052vw;
+  margin-left: 56vw;
 }
 .login_text_r {
   color: #09a144;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2vh;
+  font-size: 1.85vh;
   font-weight: 500;
 }
 .block_r {
@@ -53,21 +52,21 @@
   align-items: center;
   align-content: center;
   flex-flow: column nowrap;
-  width: 7.969vw;
-  height: 4.7vh;
+  width: 6vw;
+  height: 4vh;
   color: #09a144;
   border: 0.3vh solid #09a144;
-  border-radius: 1.2vh;
+  border-radius: 0.8vh;
   margin-left: 1.563vw;
 }
 .register_text_r {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.05vh;
+  font-size: 1.7vh;
   font-weight: 200;
 }
 .circle_r {
-  width: 4vw;
-  height: 8vh;
+  width: 3vw;
+  height: 6vh;
   border-radius: 100%;
   margin-left: 1.615vw;
   border: 0.1vh solid #000;
