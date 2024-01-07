@@ -1,0 +1,46 @@
+@import '../../mixinspack/mixins.styl'
+
+.buttons-cont
+   sizer(8vw,5vh)
+   display:flex;
+   flex-direction:row
+.button
+    background-color: blue;
+    color: #20826c;
+    display: block;
+    height: 40px * 2;
+    position: relative;
+    text-decoration: none;
+    width: 40px * 2;
+    border-radius:50%;
+    transition(color 0.1s);
+
+.button-i
+    position: relative;
+    z-index: 1;
+    
+
+.inner
+    background-color: #20826c;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    width: 0;
+  
+    border-radius:50%;
+    transition(all 0.1s);
+    
+
+.inner:hover
+    color: #fff;
+
+.inner
+    height: 40px * 2 - 2px * 2;
+    margin-left: -38px;
+    margin-top: -38px;
+    width: 40px * 2 - 2px * 2;
+      
+       

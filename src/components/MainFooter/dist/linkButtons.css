@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter:wght@300&family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.buttons-cont {
+  width: 8vw;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+}
+.button {
+  background-color: #00f;
+  color: #20826c;
+  display: block;
+  height: 80px;
+  position: relative;
+  text-decoration: none;
+  width: 80px;
+  border-radius: 50%;
+}
+.button-i {
+  position: relative;
+  z-index: 1;
+}
+.inner {
+  background-color: #20826c;
+  display: block;
+  height: 0;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  width: 0;
+  border-radius: 50%;
+}
+.inner:hover {
+  color: #fff;
+}
+.inner {
+  height: 76px;
+  margin-left: -38px;
+  margin-top: -38px;
+  width: 76px;
+}
