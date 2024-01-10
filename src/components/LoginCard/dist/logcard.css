@@ -76,3 +76,45 @@
   height: 100%;
   background-repeat: no-repeat;
 }
+.log-form {
+  width: 100%;
+  height: 43%;
+}
+.form-field {
+  width: 25vw;
+  height: 6vh;
+  margin-top: 2vh;
+  border: none;
+  background-color: #e4e4e4;
+  background-image: url("/public/images/profile_icon.png");
+  background-position: 0.8vw 1.6vh;
+  background-repeat: no-repeat;
+  padding-left: 3vw;
+  border-radius: 0.3vw;
+}
+.form-field:nth-child(3) {
+  background-image: url("/public/images/email_icon.png");
+  background-position: 0.8vw 2.1vh;
+}
+.form-field::placeholder {
+  font-size: 1vw;
+  color: #616161;
+}
+.form-field:focus {
+  outline-color: #39ab59;
+}
+.l-button {
+  width: 15vw;
+  height: 6vh;
+  border: none;
+  border-radius: 2vw;
+  background-color: #39ab59;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2vw;
+  font-weight: 600;
+  cursor: pointer;
+}
+.l-button:hover {
+  background-color: #3fca66;
+}
