@@ -27,6 +27,14 @@
     margin-top: 3.5vh
     border: 0.1vw solid #DADADA
     border-radius: 50% 
+    cursor: pointer
+    
+.circle_l:hover
+    sizer(2.5vw,5vh)
+    margin-left: 48%
+    margin-top: 3.5vh
+    border: 0.1vw solid green
+    border-radius: 50% 
 
 .google_ico
     sizer(1vw,2vh)
@@ -63,6 +71,7 @@
 .image_r_back
     sizer(25.98vw,71vh)
     position: absolute
+    z-index 100
     border-top-right-radius: 2.4vh
     border-bottom-right-radius: 2.4vh
 
@@ -139,10 +148,23 @@
 
 
 .enter_button_r
+    position absolute
+    bottom: 38vh
     flexer(c,c,cn)
-    sizer(8vw,4.5vh)
+    sizer(12vw,4.5vh)
     margin-top: 1.5vh
-    border: 0.4vh solid white
+    border: 0.2vh solid white
     border-radius: 4vh
-    span
-        color: white
+    color: white
+    z-index 1000
+    cursor pointer
+
+
+.enter_button_r:hover
+    flexer(c,c,cn)
+    sizer(12vw,4.5vh)
+    margin-top: 1.5vh
+    border: 0.2vh solid white
+    background-color: white
+    border-radius: 4vh
+    color: #39AB59

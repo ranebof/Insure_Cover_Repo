@@ -27,9 +27,7 @@ export default function LogCard() {
                     <div className="hello_friend_con"><p className="hello_friend">Привіт, Друже!</p></div>
                     <div className="enter_text_r_con"><p className="enter_text_r">Увійди в свій персональний аккаунт для продовження роботи з нами</p></div>
                 </div>
-                <div className="enter_button_r">
-                    <span>Увійти</span>
-                </div>
+                <div className="enter_button_r">Увійти</div>
 
 
             </div>
