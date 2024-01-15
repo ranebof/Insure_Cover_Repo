@@ -1,8 +1,8 @@
 import React from "react";
-import "./dist/logcard.css";
+import "./dist/regcard.css";
 import RightBackPhoto from './login_background.png'
 
-export default function LogCard() {
+export default function RegCard() {
     return (
         <div className="main_container">
             <div className="card_container_left">
