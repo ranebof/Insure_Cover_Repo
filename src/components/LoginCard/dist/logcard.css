@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter:wght@300&family=Noto+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 .main_container {
   width: 68vw;
   height: 71vh;
@@ -71,10 +73,12 @@
   border-top-right-radius: 2.4vh;
   border-bottom-right-radius: 2.4vh;
 }
-.image_r {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
+.image_r_back {
+  width: 25.98vw;
+  height: 71vh;
+  position: absolute;
+  border-top-right-radius: 2.4vh;
+  border-bottom-right-radius: 2.4vh;
 }
 .log-form {
   width: 100%;
@@ -117,4 +121,58 @@
 }
 .l-button:hover {
   background-color: #3fca66;
+}
+.card_container_right {
+  line-height: 1.8vh;
+  margin: 0 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+}
+.text_con_r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+}
+.hello_friend_con {
+  width: auto;
+  height: 9vh;
+}
+.hello_friend {
+  font-size: 4vh;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 600;
+}
+.enter_text_r_con {
+  width: 14vw;
+  height: auto;
+}
+.enter_text_r {
+  color: #fff;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5vh;
+  font-style: thin;
+  font-weight: 300;
+  line-height: 100%;
+}
+.enter_button_r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-flow: column nowrap;
+  width: 8vw;
+  height: 4.5vh;
+  margin-top: 1.5vh;
+  border: 0.4vh solid #fff;
+  border-radius: 4vh;
+}
+.enter_button_r span {
+  color: #fff;
 }
