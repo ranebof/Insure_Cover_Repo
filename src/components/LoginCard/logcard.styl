@@ -9,17 +9,19 @@
     flexer(s,c,rn)
 
 .card_container_left
-    sizer(65%,100%)
+    sizer(60%,100%)
     background: radial-gradient(258.42% 185.09% at 64.55% 88.93%, #F6F6F6 0%, #D7D7D7 100%), #FFF;
     border-top-left-radius: 2.4vh
     border-bottom-left-radius: 2.4vh
     text-align: center
     align-items: center
-    
+
+
+
 .text_container_l
     sizer(auto,auto)
     margin-left: 5%
-    margin-top: 15%
+    margin-top: 10%
 
 .circle_l
     sizer(2.5vw,5vh)
@@ -68,15 +70,14 @@
     border-top-right-radius: 2.4vh
     border-bottom-right-radius: 2.4vh
 
-.image_r_back
-    sizer(25.98vw,71vh)
-    position: absolute
-    z-index 100
-    border-top-right-radius: 2.4vh
-    border-bottom-right-radius: 2.4vh
+// .image_r_back
+//     sizer(27.2vw,20vh)
+//     border-top-right-radius: 2.4vh
+//     border-bottom-right-radius: 2.4vh
 
 .log-form
-    sizer(100%,43%) 
+    sizer(100%,40%) 
+    margin-top:2vh
 
 .form-field
     sizer(20vw,6vh)
@@ -84,7 +85,8 @@
     border:none
     background-color:#E4E4E4
     background-image: url('/public/images/profile_icon.png') 
-    background-position: 0.8vw 1.6vh
+    background-position: 1vw 1.9vh
+    background-size:1.2vw
     background-repeat: no-repeat
     padding-left:3vw
     border-radius:0.3vw
@@ -92,12 +94,16 @@
 
 .form-field:nth-child(3)
     background-image: url("/public/images/email_icon.png")
-    background-position: 0.8vw 2.1vh 
+    background-position: 1vw 2.2vh
+
+.form-field:nth-child(4)
+    background-image: url("/public/images/password_icon.png")
+    background-position: 0.9vw 1.6vh 
+    visibility: hidden
 
 .form-field::placeholder
-    font-size:1vw    
+    font-size:0.9vw    
     color:#616161
-
 .form-field:focus
     outline-color: #39AB59
     
@@ -112,6 +118,7 @@
     font-size:1.2vw
     font-weight:600
     cursor: pointer
+    transition: 0.3s
 
 .l-button:hover
     background-color: #3fca66
@@ -124,6 +131,7 @@
 
 .text_con_r
   flexer(c,c,rw)
+  margin-bottom:8vh
 
 .hello_friend_con
     sizer(auto,9vh)
@@ -135,13 +143,13 @@
     font-weight: 600
 
 .enter_text_r_con
-    sizer(14vw,auto)
+    sizer(17vw,auto)
 
 .enter_text_r
     color: #FFF;
     text-align: center;
     font-family: "Montserrat", sans-serif
-    font-size: 1.5vh
+    font-size: 1.6vh
     font-style: thin;
     font-weight: 300;
     line-height: 100%;
@@ -158,6 +166,7 @@
     color: white
     z-index 1000
     cursor pointer
+    transition: 0.3s
 
 
 .enter_button_r:hover

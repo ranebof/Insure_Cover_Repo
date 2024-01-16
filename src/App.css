@@ -1,5 +1,9 @@
 .Main {
-  background: radial-gradient(99.91% 74.18% at 38.26% 46.59%, #F1F1F1 0%, #E7E7E7 100%);
+  /*background: radial-gradient(99.91% 74.18% at 38.26% 46.59%, #F1F1F1 0%, #E7E7E7 100%);*/
+  background-image: url("/public/images/MainBackground.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat
+
 }
 
 

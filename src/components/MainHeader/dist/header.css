@@ -49,6 +49,7 @@
   font-weight: 500;
   width: auto;
   height: auto;
+  transition: 0.3s;
 }
 .login_text_r:hover {
   color: #08602a;
@@ -72,6 +73,7 @@
   border-radius: 0.8vh;
   margin-left: 1.563vw;
   cursor: pointer;
+  transition: 0.3s;
 }
 .block_r:hover {
   display: flex;
@@ -96,6 +98,7 @@
   color: #09a144;
   width: auto;
   height: auto;
+  transition: 0.3s;
 }
 .circle_r {
   width: 3vw;

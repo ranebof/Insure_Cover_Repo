@@ -1,5 +1,6 @@
 import React from 'react';
 import "./dist/header.css";
+import {LogEvent} from '../LoginCard/logcard'
 
 export default function header(){
 
@@ -10,7 +11,7 @@ export default function header(){
                     <span className='logo_text'>InsureCover</span>
                 </div>
                 <div className='right_container'>
-                    <div className='login_text_r'>Вхід</div>
+                    <div className='login_text_r' onClick={LogEvent}>Вхід</div>
                     <div className='block_r'>
                         <p className='register_text_r'>Реєстрація</p>
                     </div>

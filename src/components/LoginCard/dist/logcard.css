@@ -18,7 +18,7 @@
   flex-flow: row nowrap;
 }
 .card_container_left {
-  width: 65%;
+  width: 60%;
   height: 100%;
   background: radial-gradient(258.42% 185.09% at 64.55% 88.93%, #f6f6f6 0%, #d7d7d7 100%), #fff;
   border-top-left-radius: 2.4vh;
@@ -30,7 +30,7 @@
   width: auto;
   height: auto;
   margin-left: 5%;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .circle_l {
   width: 2.5vw;
@@ -82,17 +82,10 @@
   border-top-right-radius: 2.4vh;
   border-bottom-right-radius: 2.4vh;
 }
-.image_r_back {
-  width: 25.98vw;
-  height: 71vh;
-  position: absolute;
-  z-index: 100;
-  border-top-right-radius: 2.4vh;
-  border-bottom-right-radius: 2.4vh;
-}
 .log-form {
   width: 100%;
-  height: 43%;
+  height: 40%;
+  margin-top: 2vh;
 }
 .form-field {
   width: 20vw;
@@ -101,17 +94,23 @@
   border: none;
   background-color: #e4e4e4;
   background-image: url("/public/images/profile_icon.png");
-  background-position: 0.8vw 1.6vh;
+  background-position: 1vw 1.9vh;
+  background-size: 1.2vw;
   background-repeat: no-repeat;
   padding-left: 3vw;
   border-radius: 0.3vw;
 }
 .form-field:nth-child(3) {
   background-image: url("/public/images/email_icon.png");
-  background-position: 0.8vw 2.1vh;
+  background-position: 1vw 2.2vh;
+}
+.form-field:nth-child(4) {
+  background-image: url("/public/images/password_icon.png");
+  background-position: 0.9vw 1.6vh;
+  visibility: hidden;
 }
 .form-field::placeholder {
-  font-size: 1vw;
+  font-size: 0.9vw;
   color: #616161;
 }
 .form-field:focus {
@@ -128,6 +127,7 @@
   font-size: 1.2vw;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 .l-button:hover {
   background-color: #3fca66;
@@ -147,6 +147,7 @@
   align-items: center;
   align-content: center;
   flex-flow: row wrap;
+  margin-bottom: 8vh;
 }
 .hello_friend_con {
   width: auto;
@@ -159,14 +160,14 @@
   font-weight: 600;
 }
 .enter_text_r_con {
-  width: 14vw;
+  width: 17vw;
   height: auto;
 }
 .enter_text_r {
   color: #fff;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5vh;
+  font-size: 1.6vh;
   font-style: thin;
   font-weight: 300;
   line-height: 100%;
@@ -187,6 +188,7 @@
   color: #fff;
   z-index: 1000;
   cursor: pointer;
+  transition: 0.3s;
 }
 .enter_button_r:hover {
   display: flex;
