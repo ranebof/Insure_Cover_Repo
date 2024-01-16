@@ -103,11 +103,14 @@
 .form-field:nth-child(3) {
   background-image: url("/public/images/email_icon.png");
   background-position: 1vw 2.2vh;
+<<<<<<< HEAD
 }
 .form-field:nth-child(4) {
   background-image: url("/public/images/password_icon.png");
   background-position: 0.9vw 1.6vh;
   visibility: hidden;
+=======
+>>>>>>> d888d66c5522ea8631ed4c6b056dd7b7c8e389b7
 }
 .form-field::placeholder {
   font-size: 0.9vw;

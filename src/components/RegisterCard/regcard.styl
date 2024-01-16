@@ -19,13 +19,21 @@
 .text_container_l
     sizer(auto,auto)
     margin-left: 5%
-    margin-top: 15%
+    margin-top: 10%
 
 .circle_l
     sizer(2.5vw,5vh)
     margin-left: 48%
     margin-top: 3.5vh
     border: 0.1vw solid #DADADA
+    border-radius: 50% 
+    cursor: pointer
+    
+.circle_l:hover
+    sizer(2.5vw,5vh)
+    margin-left: 48%
+    margin-top: 3.5vh
+    border: 0.1vw solid green
     border-radius: 50% 
 
 .google_ico
@@ -63,11 +71,13 @@
 .image_r_back
     sizer(25.98vw,71vh)
     position: absolute
+    z-index 100
     border-top-right-radius: 2.4vh
     border-bottom-right-radius: 2.4vh
 
 .log-form
-    sizer(100%,43%) 
+    sizer(100%,40%) 
+    margin-top:2vh
 
 .form-field
     sizer(20vw,6vh)
@@ -75,7 +85,8 @@
     border:none
     background-color:#E4E4E4
     background-image: url('/public/images/profile_icon.png') 
-    background-position: 0.8vw 1.6vh
+    background-position: 1vw 1.9vh
+    background-size:1.2vw
     background-repeat: no-repeat
     padding-left:3vw
     border-radius:0.3vw
@@ -83,10 +94,10 @@
 
 .form-field:nth-child(3)
     background-image: url("/public/images/email_icon.png")
-    background-position: 0.8vw 2.1vh 
+    background-position: 1vw 2.2vh 
 
 .form-field::placeholder
-    font-size:1vw    
+    font-size:0.9vw    
     color:#616161
 
 .form-field:focus
@@ -139,10 +150,23 @@
 
 
 .enter_button_r
+    position absolute
+    bottom: 38vh
     flexer(c,c,cn)
-    sizer(8vw,4.5vh)
+    sizer(12vw,4.5vh)
     margin-top: 1.5vh
-    border: 0.4vh solid white
+    border: 0.2vh solid white
     border-radius: 4vh
-    span
-        color: white
+    color: white
+    z-index 1000
+    cursor pointer
+
+
+.enter_button_r:hover
+    flexer(c,c,cn)
+    sizer(12vw,4.5vh)
+    margin-top: 1.5vh
+    border: 0.2vh solid white
+    background-color: white
+    border-radius: 4vh
+    color: #39AB59

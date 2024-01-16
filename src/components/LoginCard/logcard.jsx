@@ -8,17 +8,14 @@ export function LogEvent(){
     var cardContainerL = document.getElementById('card_container_left');
     var text_friend = document.getElementById('text_friend');
     var text_enter_down = document.getElementById('text_enter_down');
-    var image_r_back = document.getElementById('image_r_back');
     var make_acc_text = document.getElementById('make_acc_text');
     var form_field = document.getElementById('form_field');
-    var form_field_s = document.getElementById('form_field_s');
     var form_field_t = document.getElementById('form_field_t');
     var form_field_p = document.getElementById('form_field_p');
     var googleIco = document.getElementById('circle_l');
     var use_email = document.getElementById('use_email');
     var next_button = document.getElementById('next_button');
     var button_r = document.getElementById('button_r');
-    var texts_r = document.getElementById('texts_r');
     var enter_text_r_con = document.getElementById('enter_text_r_con');
 
     cardContainerR.style.width = '60%'
