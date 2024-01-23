@@ -1,8 +1,8 @@
 import React from "react";
 import "./dist/logcard.css";
-import RightBackPhoto from './login_background.png'
+// import RightBackPhoto from './login_background.png'
 
-export function LogEvent(){
+export function LogEvent() {
 
     var cardContainerR = document.getElementById('card_container_right');
     var cardContainerL = document.getElementById('card_container_left');
@@ -19,7 +19,7 @@ export function LogEvent(){
     var enter_text_r_con = document.getElementById('enter_text_r_con');
 
     cardContainerR.style.width = '60%'
-    cardContainerR.style.background ='radial-gradient(258.42% 185.09% at 64.55% 88.93%, #F6F6F6 0%, #D7D7D7 100%), #FFF';
+    cardContainerR.style.background = 'radial-gradient(258.42% 185.09% at 64.55% 88.93%, #F6F6F6 0%, #D7D7D7 100%), #FFF';
     cardContainerR.style.transition = '0.4s'
 
     cardContainerL.style.width = '40%'
@@ -38,7 +38,7 @@ export function LogEvent(){
     text_friend.style.transition = '0.05s'
 
 
-   
+
 
     text_enter_down.style.color = 'black';
     text_enter_down.style.top = '39vh'
@@ -49,7 +49,7 @@ export function LogEvent(){
     googleIco.style.transition = '0.05s'
     googleIco.style.right = '36vw'
     googleIco.style.top = '31vh'
-    
+
     form_field.style.position = 'absolute'
     form_field.style.zIndex = '2'
     form_field_t.style.position = 'absolute'
@@ -68,13 +68,13 @@ export function LogEvent(){
     text_enter_down.innerText = "Або використайте вашу пошту для реєстрації"
     text_enter_down.style.position = 'absolute'
     text_enter_down.style.marginTop = '3vh'
-    
+
     next_button.innerText = "Зареєструватись"
     next_button.style.border = '0.01vw solid white'
     next_button.style.background = 'none'
-    
 
-    
+
+
     button_r.innerText = "Далі"
     button_r.style.backgroundColor = '#39AB59'
     button_r.style.color = '#FFF'
@@ -83,7 +83,7 @@ export function LogEvent(){
 
 export default function LogCard() {
 
-    
+
     return (
         <div className="main_container">
             <div id="card_container_left" className="card_container_left">
@@ -104,9 +104,9 @@ export default function LogCard() {
                 </div>
             </div>
             <div id="card_container_right" className="card_container_right">
-                 {/* <img id="image_r_back" className="image_r_back" src={RightBackPhoto} alt=""></img> */}
+                {/* <img id="image_r_back" className="image_r_back" src={RightBackPhoto} alt=""></img> */}
                 <div id="texts_r" className="text_con_r">
-                    <div  className="hello_friend_con"><p className="hello_friend" id="text_friend">Привіт, Друже!</p></div>
+                    <div className="hello_friend_con"><p className="hello_friend" id="text_friend">Привіт, Друже!</p></div>
                     <div id="enter_text_r_con" className="enter_text_r_con"><p className="enter_text_r" id="text_enter_down">Увійди в свій персональний аккаунт для продовження роботи з нами</p></div>
                 </div>
                 <div id="button_r" className="enter_button_r" onClick={LogEvent}>Увійти</div>
