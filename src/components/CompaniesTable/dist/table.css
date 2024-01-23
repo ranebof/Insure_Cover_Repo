@@ -13,19 +13,23 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(211deg, #39ab59 0%, #39ab8c 94%, #39ab90 100%);
+  box-shadow: 20px 20px 30px 6px rgba(0,0,0,0.15);
 }
 .table_header_txt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   align-self: center;
   color: #fff;
   font-size: 1.2vw;
 }
 .search-bar {
   width: 25vw;
-  height: 6vh;
+  height: 4vh;
   border-radius: 0.8vw;
   align-self: center;
   background-image: url("/public/images/searchIcon.png");
-  background-position: 23.5vw;
+  background-position: 95%;
   background-size: 1.3vw;
   background-repeat: no-repeat;
   border: none;
@@ -46,6 +50,7 @@
   height: 0;
 }
 .grid-cell {
+  cursor: pointer;
   border-radius: 2vw;
   background-color: transparent;
   color: #fff;
@@ -65,4 +70,12 @@
   .grid-container {
     grid-template-columns: 1fr;
   }
+}
+.side-menu {
+  background-color: #fff;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
 }

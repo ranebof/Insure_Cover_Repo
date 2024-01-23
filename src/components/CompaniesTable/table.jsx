@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import './dist/table.css';
 
+const SideMenu = ({ selectedCell, onClose }) => {
+    // Add logic for your side menu content based on the selected cell
+    // You can customize this component according to your requirements
+    return (
+        <div className="side-menu">
+            <h3>{selectedCell.name}</h3>
+            {/* Add your content for the side menu */}
+            <button onClick={onClose}>Close</button>
+        </div>
+    );
+};
+
 const Table = () => {
     const initialData = [
         { id: 1, name: 'AquaMax' },
@@ -33,9 +45,20 @@ const Table = () => {
     ];
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCell, setSelectedCell] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
+    };
+
+    const handleCellClick = (company) => {
+        setSelectedCell(company);
+        setIsMenuOpen(true);
+    };
+
+    const handleCloseMenu = () => {
+        setIsMenuOpen(false);
     };
 
     const highlightSearch = (name) => {
@@ -79,21 +102,33 @@ const Table = () => {
 
     return (
         <div className="table-container">
-            <div className='table_header_txt'><h3>Виберіть компанію</h3></div>
-            <input
-                className="search-bar"
-                type="text"
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
+            <div className="table_header_txt">
+                <h3>Виберіть компанію</h3>
+                <input
+                    className="search-bar"
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+            </div>
 
             <div className="grid-container">
                 {filterData().map((company) => (
                     <div key={company.id} className="grid-row">
-                        <div className="grid-cell">{highlightSearch(company.name)}</div>
+                        <div
+                            key={company.id}
+                            className="grid-cell"
+                            onClick={() => handleCellClick(company)}
+                        >
+                            {highlightSearch(company.name)}
+                        </div>
                     </div>
                 ))}
             </div>
+
+            {isMenuOpen && (
+                <SideMenu selectedCell={selectedCell} onClose={handleCloseMenu} />
+            )}
         </div>
     );
 };
