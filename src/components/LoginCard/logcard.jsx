@@ -5,7 +5,6 @@ import "./dist/logcard.css";
 
 export function LogEvent(){
 
-
     var cardContainerR = document.getElementById('card_container_right');
     var cardContainerL = document.getElementById('card_container_left');
     var text_friend = document.getElementById('text_friend');
@@ -26,7 +25,7 @@ export function LogEvent(){
     
 
     cardContainerR.style.width = '60%'
-    cardContainerR.style.background ='radial-gradient(258.42% 185.09% at 64.55% 88.93%, #F6F6F6 0%, #D7D7D7 100%), #FFF';
+    cardContainerR.style.background = 'radial-gradient(258.42% 185.09% at 64.55% 88.93%, #F6F6F6 0%, #D7D7D7 100%), #FFF';
     cardContainerR.style.transition = '0.4s'
 
     cardContainerL.style.width = '40%'
@@ -48,9 +47,9 @@ export function LogEvent(){
     text_friend.style.marginBottom = '0'
     text_friend.style.zIndex = '50'
 
-    
 
-   
+
+
 
     text_enter_down.style.color = 'black';
     text_enter_down.style.top = '39vh'
@@ -61,7 +60,7 @@ export function LogEvent(){
     googleIco.style.left = '61.4vw'
     googleIco.style.bottom = '61.1vh'
     googleIco.style.margin = '0 0 0 0'
-    
+
     form_field.style.opacity = '0'
     form_field.style.width = '0vw'
     form_field.style.height = '0vh'
@@ -71,12 +70,18 @@ export function LogEvent(){
     form_field_s.style.width = '0vw'
     form_field_s.style.height = '0vh'
     form_field_s.style.margin = '0 0 0 0'
-    
+
     form_field_t.style.opacity = '0'
     form_field_t.style.width = '0vw'
     form_field_t.style.height = '0vh'
     form_field_t.style.margin = '0 0 0 0'
 
+
+    form_field_p.style.visibility = 'visible'
+    form_field_p.style.opacity = '0'
+    form_field_p.style.width = '0vw'
+    form_field_p.style.height = '0vh'
+    form_field_p.style.margin = '0 0 0 0'
     
     make_acc_text.innerText = "Не Зареєстровані?"
     make_acc_text.style.color = '#FFFFFF'
@@ -93,28 +98,16 @@ export function LogEvent(){
     use_email.style.opacity = '0.8'
 
     text_enter_down.innerText = "Або використайте вашу пошту для реєстрації"
-    text_enter_down.style.marginTop = '10vh'
-    text_enter_down.style.marginBottom = '2vh'
-    text_enter_down.style.lineHeight = '100%'
+    text_enter_down.style.position = 'absolute'
+    text_enter_down.style.marginTop = '2vh'
     
     next_button.innerText = "Зареєструватись"
     next_button.style.border = '0.01vw solid white'
     next_button.style.background = 'none'
-    next_button.style.marginTop = '1.7vh'
-    next_button.style.transition = '0.3s'
-
-    next_button.addEventListener("mouseenter", function() {
-        next_button.style.backgroundColor = "white"
-        next_button.style.color = '#39AB59'
-    });
-
-    next_button.addEventListener('mouseleave', function(){
-        next_button.style.backgroundColor ="#3AAC7F"
-        next_button.style.color = 'white'
-    });
+    next_button.style.marginTop = '1vh'
     
 
-    
+
     button_r.innerText = "Далі"
     button_r.style.backgroundColor = '#39AB59'
     button_r.style.color = '#FFF'
@@ -323,7 +316,7 @@ export function RegisterButton() {
 
 export default function LogCard() {
 
-    
+
     return (
         <div className="main_container">
             <div id="card_container_left" className="card_container_left">
@@ -342,9 +335,9 @@ export default function LogCard() {
                 </div>
             </div>
             <div id="card_container_right" className="card_container_right">
-                 {/* <img id="image_r_back" className="image_r_back" src={RightBackPhoto} alt=""></img> */}
+                {/* <img id="image_r_back" className="image_r_back" src={RightBackPhoto} alt=""></img> */}
                 <div id="texts_r" className="text_con_r">
-                    <div  className="hello_friend_con"><p className="hello_friend" id="text_friend">Привіт, Друже!</p></div>
+                    <div className="hello_friend_con"><p className="hello_friend" id="text_friend">Привіт, Друже!</p></div>
                     <div id="enter_text_r_con" className="enter_text_r_con"><p className="enter_text_r" id="text_enter_down">Увійди в свій персональний аккаунт для продовження роботи з нами</p></div>
                 </div>
                 <form id="form_right_login_con" className="form_right_login_con">
