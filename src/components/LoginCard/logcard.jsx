@@ -75,13 +75,6 @@ export function LogEvent(){
     form_field_t.style.width = '0vw'
     form_field_t.style.height = '0vh'
     form_field_t.style.margin = '0 0 0 0'
-
-
-    form_field_p.style.visibility = 'visible'
-    form_field_p.style.opacity = '0'
-    form_field_p.style.width = '0vw'
-    form_field_p.style.height = '0vh'
-    form_field_p.style.margin = '0 0 0 0'
     
     make_acc_text.innerText = "Не Зареєстровані?"
     make_acc_text.style.color = '#FFFFFF'
