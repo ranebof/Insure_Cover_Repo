@@ -99,6 +99,16 @@ export function LogEvent(){
     next_button.style.background = 'none'
     next_button.style.marginTop = '1vh'
     
+    next_button.addEventListener("mouseenter", function() {
+        next_button.style.backgroundColor = "white"
+        next_button.style.color = "#39AB59"
+    });
+
+    next_button.addEventListener('mouseleave', function(){
+        next_button.style.background ="none"
+        next_button.style.color = "white"
+
+    });
 
 
     button_r.innerText = "Далі"
