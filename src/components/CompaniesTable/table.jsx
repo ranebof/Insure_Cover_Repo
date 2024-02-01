@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import './dist/table.css';
 
 const SideMenu = ({ selectedCell, onClose }) => {
-    // Add logic for your side menu content based on the selected cell
-    // You can customize this component according to your requirements
     return (
         <div className="side-menu">
             <h3>{selectedCell.name}</h3>
-            {/* Add your content for the side menu */}
             <button onClick={onClose}>Close</button>
         </div>
     );
