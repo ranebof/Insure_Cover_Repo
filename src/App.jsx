@@ -1,10 +1,9 @@
 import './App.css';
 import Header from './components/MainHeader/header';
 import Footer from './components/MainFooter/footer';
-import LogCard from './components/LoginCard/logcard';
-import Table from './components/CompaniesTable/table';
-// import RegCard from './components/RegisterCard/regcard';
-import { BrowserRouter, Routes, Router, Route } from 'react-router-dom';
+import CompaniesTable from './pages/CompaniesTable';
+import LogCard from './pages/UserLoginRegistration';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 export default function App() {
@@ -12,12 +11,8 @@ export default function App() {
     <div className="Main">
       <BrowserRouter>
         <Routes>
-          {/* <Header />
-          
-          <Table />
-          <Footer /> */}
-          <Route path='/logincard' element={<LogCard />} />
-
+          <Route path='/companies' element={<CompaniesTable />} />
+          <Route path='/login' element={<LogCard />} />
         </Routes>
       </BrowserRouter>
     </div>
