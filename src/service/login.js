@@ -1,12 +1,12 @@
 import axios from "axios";
 
 
-const API = "";
+const API = "http://16.171.165.215:8000/api/register/";
 
 
-const register = (name,surname,email) => {
+const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {
      return axios.post(API,{
-        name,surname,email       
+      user,first_name,last_name,email,phone_number,company_name,company_email       
      }, {
        headers: {
           "Accept": "*/*",
@@ -20,3 +20,4 @@ const authService = {
     register
 }
 
+export default authService

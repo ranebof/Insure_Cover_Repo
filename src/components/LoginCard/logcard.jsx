@@ -1,4 +1,5 @@
 import React from "react";
+import authService from "../../service/login";
 import "./dist/logcard.css";
 
 
@@ -152,8 +153,18 @@ export function LogEvent(){
 
 }
 
+var obj = [1,2,3]
 
-export function RegisterButton() {
+
+const regFunct = async() => {
+    const response = await authService.register({username:"ranebof",password: "pass1234", email:"x@gmail.com"},"x","x","x@gmail.com","x","x","x@gmail.com");
+
+    console.log(response.data)
+}
+
+
+export async function RegisterButton() {
+    await regFunct();
     var cardContainerR = document.getElementById('card_container_right');
     var cardContainerL = document.getElementById('card_container_left');
     var text_friend = document.getElementById('text_friend');
@@ -313,8 +324,6 @@ export function RegisterButton() {
 
 
 }
-
-
 
 
 export default function LogCard() {

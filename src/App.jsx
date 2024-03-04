@@ -11,8 +11,8 @@ export default function App() {
     <div className="Main">
       <Header />
       <LogCard />
-      {/* <Table /> */}
-      <Footer />
+      {/* <Table />  */}
+      <Footer /> 
     </div>
   )
 }
