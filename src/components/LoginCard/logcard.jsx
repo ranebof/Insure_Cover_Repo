@@ -4,6 +4,7 @@ import "./dist/logcard.css";
 
 
 
+
 export function LogEvent() {
 
     //     var cardContainerR = document.getElementById('card_container_right');
@@ -319,8 +320,6 @@ export async function RegisterButton() {
     //         button_r.style.backgroundColor = 'transparent'
     //         button_r.style.color = 'white'
     //     });
-
-
 
 
 }

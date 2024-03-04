@@ -10,6 +10,11 @@ export default function header(){
                     <img id='Logo' src="./images/Logo.png" alt='logo'></img>
                     <span className='logo_text'>InsureCover</span>
                 </div>
+                <div className='cont_search_and_create'>
+                    <div className='search_policy'>Пошук Полісу</div>
+                    <div className='create_policy'>Створення Полісу</div>
+                </div>
+
                 <div className='right_container'>
                     <div className='login_text_r' onClick={LogEvent}>Вхід</div>
                     <div className='block_r'>
