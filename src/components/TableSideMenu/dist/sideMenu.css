@@ -1,0 +1,65 @@
+.side_menu {
+  position: absolute;
+  width: 80vw;
+  height: 70vh;
+  background: linear-gradient(211deg, #f6f6f6 0%, #d7d7d7 94%, #d7d7d7 100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  overflow-y: auto;
+}
+.blocks_list {
+  width: 80%;
+  margin-top: 4vh;
+}
+.block {
+  width: 100%;
+  height: 4vh;
+  background-color: #fff;
+  margin-bottom: 1vh;
+  transition: height 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1vw;
+  box-sizing: border-box;
+  border-radius: 0.5vw;
+}
+.company_name {
+  width: 9vw;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.block_plus {
+  transition: transform 0.3s ease-in-out;
+  font-size: 3vh;
+  color: #808080;
+}
+.block.expanded .block_plus {
+  transform: rotate(45deg);
+}
+.block.expanded {
+  height: 30vh;
+}
+.block_number {
+  font-weight: bold;
+}
+.header_text {
+  margin-top: 2vh;
+  display: flex;
+  width: 64vw;
+  justify-content: space-between;
+}
+.header_text span {
+  color: #3aac73;
+  font-size: 2.5vh;
+  font-weight: 700;
+}
+.side_menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
