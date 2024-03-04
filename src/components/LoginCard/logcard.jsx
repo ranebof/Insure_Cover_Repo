@@ -1,4 +1,5 @@
 import React from "react";
+import authService from "../../service/login";
 import "./dist/logcard.css";
 
 
@@ -99,6 +100,16 @@ export function LogEvent(){
     next_button.style.background = 'none'
     next_button.style.marginTop = '1vh'
     
+    next_button.addEventListener("mouseenter", function() {
+        next_button.style.backgroundColor = "white"
+        next_button.style.color = "#39AB59"
+    });
+
+    next_button.addEventListener('mouseleave', function(){
+        next_button.style.background ="none"
+        next_button.style.color = "white"
+
+    });
 
 
     button_r.innerText = "Далі"
@@ -142,8 +153,18 @@ export function LogEvent(){
 
 }
 
+var obj = [1,2,3]
 
-export function RegisterButton() {
+
+const regFunct = async() => {
+    const response = await authService.register({username:"ranebof",password: "pass1234", email:"x@gmail.com"},"x","x","x@gmail.com","x","x","x@gmail.com");
+
+    console.log(response.data)
+}
+
+
+export async function RegisterButton() {
+    await regFunct();
     var cardContainerR = document.getElementById('card_container_right');
     var cardContainerL = document.getElementById('card_container_left');
     var text_friend = document.getElementById('text_friend');
@@ -303,8 +324,6 @@ export function RegisterButton() {
 
 
 }
-
-
 
 
 export default function LogCard() {
