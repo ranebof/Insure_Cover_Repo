@@ -8,7 +8,7 @@ export default function UserLoginRegistration() {
     return (
         <div className="Main">
             <Header />
-            {/* <RegCard /> */}
+            <RegCard />
             <LogCard />
             <Footer />
         </div>
