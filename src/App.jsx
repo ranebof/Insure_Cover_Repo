@@ -12,8 +12,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/companies' element={<CompaniesTable />} />
-          <Route path='/login' element={<LogCard />} />
-          <Route path='/table' element={<CompaniesTable />} />
+          <Route path='/' element={<LogCard />} />
         </Routes>
       </BrowserRouter>
     </div>

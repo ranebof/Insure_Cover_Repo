@@ -40,7 +40,7 @@
   flex-flow: row wrap;
   width: auto;
   height: auto;
-  margin-left: 56vw;
+  margin-left: 20vw;
 }
 .login_text_r {
   color: #09a144;
@@ -106,4 +106,19 @@
   border-radius: 100%;
   margin-left: 1.615vw;
   border: 0.1vh solid #000;
+}
+.cont_search_and_create {
+  width: 15vw;
+  height: 2vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  flex-flow: column wrap;
+  margin-left: 25vw;
+}
+.create_policy {
+  margin-left: 2vw;
+  color: #3aac73;
+  font-size: 2vh;
 }
