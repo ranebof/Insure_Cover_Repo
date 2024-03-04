@@ -24,12 +24,12 @@ export default function RegCard() {
                 </div>
                 <div id="reg_circle_l" className="reg_circle_l"><img src="./images/google_ico.png" className="google_ico" alt=""></img></div>
                 <div id="reg_use_email" className="reg_use_email">Або використайте вашу пошту для входу </div>
-                <form id="log_form" className="log-form">
+                <form id="reg-log_form" className="reg-log-form">
                     <input id="form_field_t" className="form-field" type="email" placeholder="Email" />
                     <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" />
                 </form>
                 <span className="forgot-pass-txt">Забули Ваш Пароль?</span>
-                <div className="log-button">
+                <div className="reg-button">
                     <button id="next_button" className="l-button">Далі</button>
                 </div>
             </div>

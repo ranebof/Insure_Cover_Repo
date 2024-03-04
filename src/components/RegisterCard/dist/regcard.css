@@ -76,7 +76,7 @@
   border-top-left-radius: 2.4vh;
   border-bottom-left-radius: 2.4vh;
 }
-.log-form {
+.reg-log-form {
   width: 100%;
   height: 27%;
   margin-top: 2vh;
@@ -195,7 +195,7 @@
   border-radius: 4vh;
   color: #39ab59;
 }
-.log-button {
+.reg-button {
   align-content: center;
   align-items: center;
   align-self: center;
