@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './dist/sideMenu.css';
 
@@ -17,16 +18,21 @@ const SideMenu = ({ selectedCell, onClose }) => {
     ];
 
     const [expandedBlock, setExpandedBlock] = useState(null);
-
+    const [searchQuery, setSearchQuery] = useState('');
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
     const handleBlockClick = (blockId) => {
         setExpandedBlock(expandedBlock === blockId ? null : blockId);
     };
 
     return (
         <div className="side_menu">
+            <div className="icon" onClick={onClose}>
+                <div className="arrow"></div>
+            </div>
             <div className='header_text'>
                 <span>Назва Компанії</span>
-                <button className='close_button' onClick={onClose}>Close</button>
                 <span>Поліси</span>
             </div>
             <div className="blocks_list">
@@ -36,18 +42,32 @@ const SideMenu = ({ selectedCell, onClose }) => {
                         className={`block ${expandedBlock === block.id ? 'expanded' : ''}`}
                         onClick={() => handleBlockClick(block.id)}
                     >
-                        <div className='company_name'>
-                            <span className="block_number">#{block.id}</span>
-                            <span className="block_name">{block.name}</span>
-                        </div>
+                        {expandedBlock !== block.id && (
+                            <div className='company_name'>
+                                <span className="block_number">#{block.id}</span>
+                                <span className="block_name">{block.name}</span>
+                            </div>
+                        )}
+                        {expandedBlock === block.id && (
+                            <div className="expanded-info">
+                                <input
+                                    className="expanded-search-bar"
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
+                                />
+                                <div className="expanded-buttons-cont">
+                                    <button></button>
+                                    <button></button>
+                                </div>
+                            </div>
+                        )}
                         <span className="block_plus">&#43;</span>
-
                     </div>
                 ))}
             </div>
         </div>
     );
 };
-
 
 export default SideMenu;

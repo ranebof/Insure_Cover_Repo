@@ -13,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path='/companies' element={<CompaniesTable />} />
           <Route path='/login' element={<LogCard />} />
+          <Route path='/table' element={<CompaniesTable />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -48,7 +48,7 @@
     transform: rotate(45deg);
 }
 .block.expanded {
-    height: 30vh; 
+    height: 40vh; 
 }
 
 .block_number {
@@ -71,4 +71,85 @@
 .side_menu::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+.close-button { 
+  top: 2.4vh;
+  position: absolute;
+  left: 2.5vw;
+}
+
+body {
+  background-color: #00b894;
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  position: inherit;
+  top: 1vh;
+  left: 1vw;
+  transform: translate(-50%, -50%);
+  width: 4.2vw;
+  margin-top: 3vh;
+  cursor: pointer;
+  scale: 0.4;
+  rotate: 180deg;
+}
+
+.arrow {
+    position: absolute;
+    width: 3.6vw;
+    height: 1vh;
+    background-color: #3AAC73;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    animation: arrow 700ms linear infinite;
+}
+
+.arrow::after, .arrow::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 10px;
+  right: -8px;
+  background-color: #3AAC73;
+}
+
+.arrow::after {
+  top: -12px;
+  transform: rotate(45deg);
+}
+
+.arrow::before {
+  top: 12px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  transform: rotate(-45deg);
+}
+
+.expanded-info {
+  width:100%
+}
+.expanded-buttons-cont{
+    display: flex;
+    justify-content: space-around;
+}
+.expanded-search-bar {
+    margin-bottom: 25vh;
+    width: 30vw;
+    height: 4vh;
+    border-radius: 0.8vw;
+    align-self: center;
+    background-image: url("/public/images/searchIcon.png")
+    background-position: 95%;
+    background-size: 1vw;
+    background-repeat: no-repeat;
+    border: none;
+    margin-left: 25%;
+    outline: none;
+    padding-left: 1.1vw;
+    box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+    transition: margin-bottom 1s;
+ 
+
+    
 }
