@@ -40,7 +40,7 @@ const SideMenu = ({ selectedCell, onClose }) => {
                     <div
                         key={block.id}
                         className={`block ${expandedBlock === block.id ? 'expanded' : ''}`}
-                        onClick={() => handleBlockClick(block.id)}
+
                     >
                         {expandedBlock !== block.id && (
                             <div className='company_name'>
@@ -57,12 +57,12 @@ const SideMenu = ({ selectedCell, onClose }) => {
                                     onChange={handleSearchChange}
                                 />
                                 <div className="expanded-buttons-cont">
-                                    <button></button>
-                                    <button></button>
+                                    <button className="pdf-button">Відкрити PDF</button>
+                                    <button className="edit-button">Редагувати</button>
                                 </div>
                             </div>
                         )}
-                        <span className="block_plus">&#43;</span>
+                        <span className="block_plus" onClick={() => handleBlockClick(block.id)}>&#43;</span>
                     </div>
                 ))}
             </div>
