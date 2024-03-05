@@ -41,6 +41,7 @@
 }
 .block.expanded .block_plus {
   transform: rotate(45deg);
+  margin-bottom: auto;
 }
 .block.expanded {
   height: 50vh;
