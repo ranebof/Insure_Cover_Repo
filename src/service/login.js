@@ -15,9 +15,24 @@ const register = (user,first_name,last_name,email,phone_number,company_name,comp
      })
 }
 
+const login = () => {
+  return axios.get(API,{
+      email,password
+  }, {
+      headers: {
+        "Accept": "*/*",
+        "Content-Type":"application/json",
+      }
+  })
+}
+
 
 const authService = {
     register
+}
+
+const loginService = {
+  login
 }
 
 export default authService

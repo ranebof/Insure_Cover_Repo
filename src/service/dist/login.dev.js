@@ -28,8 +28,23 @@ var register = function register(user, first_name, last_name, email, phone_numbe
   });
 };
 
+var login = function login() {
+  return _axios["default"].get(API, {
+    email: email,
+    password: password
+  }, {
+    headers: {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    }
+  });
+};
+
 var authService = {
   register: register
+};
+var loginService = {
+  login: login
 };
 var _default = authService;
 exports["default"] = _default;
