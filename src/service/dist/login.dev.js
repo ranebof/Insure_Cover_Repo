@@ -28,14 +28,13 @@ var register = function register(user, first_name, last_name, email, phone_numbe
   });
 };
 
-var login = function login() {
-  return _axios["default"].get(API, {
+var login = function login(email, password) {
+  return _axios["default"].post(API, {
     email: email,
     password: password
-  }, {
-    headers: {
-      "Accept": "*/*",
-      "Content-Type": "application/json"
+  }).then(function (response) {
+    if (response.data.token) {
+      localStorage.setItem("token", JSON.stringify(response.data));
     }
   });
 };

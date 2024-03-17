@@ -15,14 +15,15 @@ const register = (user,first_name,last_name,email,phone_number,company_name,comp
      })
 }
 
-const login = () => {
-  return axios.get(API,{
+const login = (email,password) => {
+  return axios.post(API,{
       email,password
-  }, {
-      headers: {
-        "Accept": "*/*",
-        "Content-Type":"application/json",
-      }
+
+  })
+  .then(function (response) {
+    if(response.data.token){
+      localStorage.setItem("token",JSON.stringify(response.data))
+    }
   })
 }
 

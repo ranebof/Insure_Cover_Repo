@@ -1,5 +1,6 @@
 import React from "react";
 import authService from "../../service/login";
+import loginService  from "../../service/login";
 import "./dist/logcard.css";
 
 
@@ -156,15 +157,21 @@ export function LogEvent() {
 // var obj = [1, 2, 3]
 
 
-// const regFunct = async () => {
-//     const response = await authService.register({ username: "ranebof", password: "pass1234", email: "x@gmail.com" }, "x", "x", "x@gmail.com", "x", "x", "x@gmail.com");
+const regFunct = async () => {
+    const response = await authService.register({ username: "raneboff", password: "pass12345", email: "xx@gmail.com" }, "xx", "xx", "xx@gmail.com", "xx", "xx", "xx@gmail.com");
 
-//     console.log(response.data)
-// }
+    console.log(response.data)
+}
 
+
+const logFucnt = async() => {
+    const response = await loginService.login({email: "x@gmail.com", password: "123456"})
+
+    console.log(response.data)
+}
 
 export async function RegisterButton() {
-    //await regFunct();
+    await regFunct();
         var cardContainerR = document.getElementById('card_container_right');
         var cardContainerL = document.getElementById('card_container_left');
         var text_friend = document.getElementById('text_friend');
