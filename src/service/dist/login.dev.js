@@ -9,10 +9,10 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var API = "http://16.170.143.105:8000/api/login/";
+var API = "http://16.170.143.105:8000/api/";
 
 var register = function register(user, first_name, last_name, email, phone_number, company_name, company_email) {
-  return _axios["default"].post(API, {
+  return _axios["default"].post(API + "register/", {
     user: user,
     first_name: first_name,
     last_name: last_name,
@@ -29,7 +29,7 @@ var register = function register(user, first_name, last_name, email, phone_numbe
 };
 
 var login = function login(username, password) {
-  return _axios["default"].post(API, {
+  return _axios["default"].post(API + "login/", {
     username: username,
     password: password
   }).then(function (response) {

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 
-const API = "http://16.170.143.105:8000/api/login/";
+const API = "http://16.170.143.105:8000/api/";
 
 
 const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {
-     return axios.post(API,{
+     return axios.post(API + "register/",{
       user,first_name,last_name,email,phone_number,company_name,company_email       
      }, {
        headers: {
@@ -16,7 +16,7 @@ const register = (user,first_name,last_name,email,phone_number,company_name,comp
 }
 
 const login = (username,password) => {
-  return axios.post(API,{
+  return axios.post(API+ "login/",{
       username,password
 
   })
