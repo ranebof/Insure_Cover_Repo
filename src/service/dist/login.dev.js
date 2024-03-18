@@ -9,7 +9,7 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var API = "http://16.171.165.215:8000/api/register/";
+var API = "http://16.170.143.105:8000/api/login/";
 
 var register = function register(user, first_name, last_name, email, phone_number, company_name, company_email) {
   return _axios["default"].post(API, {
@@ -28,9 +28,9 @@ var register = function register(user, first_name, last_name, email, phone_numbe
   });
 };
 
-var login = function login(email, password) {
+var login = function login(username, password) {
   return _axios["default"].post(API, {
-    email: email,
+    username: username,
     password: password
   }).then(function (response) {
     if (response.data.token) {
@@ -40,9 +40,7 @@ var login = function login(email, password) {
 };
 
 var authService = {
-  register: register
-};
-var loginService = {
+  register: register,
   login: login
 };
 var _default = authService;

@@ -1,12 +1,24 @@
 import React from "react";
 import authService from "../../service/login";
-import loginService  from "../../service/login";
 import "./dist/logcard.css";
 
 
 
-export function LogEvent() {
 
+
+const regFunct = async () => {
+    await authService.register({ username: "xx@gmail.com", password: "pass12345", email: "xx@gmail.com" }, "xx", "xx", "xx@gmail.com", "xx", "xx", "xx@gmail.com");
+}
+
+
+const logFunct = async() => {
+    const username = "xx@gmail.com"
+    const password = "pass12345"
+    await authService.login(username,password)
+}
+
+export function LogEvent() {
+    logFunct()
         var cardContainerR = document.getElementById('card_container_right');
         var cardContainerL = document.getElementById('card_container_left');
         var text_friend = document.getElementById('text_friend');
@@ -157,21 +169,14 @@ export function LogEvent() {
 // var obj = [1, 2, 3]
 
 
-const regFunct = async () => {
-    const response = await authService.register({ username: "raneboff", password: "pass12345", email: "xx@gmail.com" }, "xx", "xx", "xx@gmail.com", "xx", "xx", "xx@gmail.com");
 
-    console.log(response.data)
-}
-
-
-const logFucnt = async() => {
-    const response = await loginService.login({email: "x@gmail.com", password: "123456"})
-
-    console.log(response.data)
-}
 
 export async function RegisterButton() {
-    await regFunct();
+
+    if(!localStorage.getItem("token")){
+        await regFunct();
+    }
+    else {
         var cardContainerR = document.getElementById('card_container_right');
         var cardContainerL = document.getElementById('card_container_left');
         var text_friend = document.getElementById('text_friend');
@@ -326,6 +331,9 @@ export async function RegisterButton() {
             button_r.style.backgroundColor = 'transparent'
             button_r.style.color = 'white'
         });
+    }
+
+        
 
 
 

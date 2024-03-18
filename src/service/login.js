@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API = "http://16.171.165.215:8000/api/register/";
+const API = "http://16.170.143.105:8000/api/login/";
 
 
 const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {
@@ -15,25 +15,22 @@ const register = (user,first_name,last_name,email,phone_number,company_name,comp
      })
 }
 
-const login = (email,password) => {
+const login = (username,password) => {
   return axios.post(API,{
-      email,password
+      username,password
 
   })
   .then(function (response) {
     if(response.data.token){
-      localStorage.setItem("token",JSON.stringify(response.data))
+     localStorage.setItem("token",JSON.stringify(response.data))
     }
   })
 }
 
 
 const authService = {
-    register
-}
-
-const loginService = {
-  login
+    register,
+    login
 }
 
 export default authService
