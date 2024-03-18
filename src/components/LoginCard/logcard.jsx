@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import authService from "../../service/login";
 import "./dist/logcard.css";
 
 
-
-
+export default function LogCard() {
+    const [isClicked, setIsClicked] = useState(false)
+    const [isRegistered,setIsRegistered] = useState(true)
+    
 
 const regFunct = async () => {
-    await authService.register({ username: "xx@gmail.com", password: "pass12345", email: "xx@gmail.com" }, "xx", "xx", "xx@gmail.com", "xx", "xx", "xx@gmail.com");
+    await authService.register({ username: "hello@gmail.com", password: "pass1234225", email: "hello@gmail.com" }, "xx", "xx", "hello@gmail.com", "xx", "xx", "hello@gmail.com");
 }
 
 
@@ -17,8 +19,10 @@ const logFunct = async() => {
     await authService.login(username,password)
 }
 
-export function LogEvent() {
-    logFunct()
+function LogEvent() {
+    
+    if(isClicked === false){
+        setIsRegistered(false)
         var cardContainerR = document.getElementById('card_container_right');
         var cardContainerL = document.getElementById('card_container_left');
         var text_friend = document.getElementById('text_friend');
@@ -159,6 +163,14 @@ export function LogEvent() {
         form_right_login_d.style.opacity = '1'
         form_right_login_d.style.display = 'block'
 
+        setIsClicked(true)
+    }
+    else {
+        logFunct()
+        setIsClicked(false)
+    } 
+        
+
 
 
 
@@ -171,12 +183,16 @@ export function LogEvent() {
 
 
 
-export async function RegisterButton() {
+async function RegisterButton() {
+    
+    
 
-    if(!localStorage.getItem("token")){
+    if(isRegistered === true){
         await regFunct();
     }
     else {
+        setIsRegistered(true)
+        setIsClicked(false)
         var cardContainerR = document.getElementById('card_container_right');
         var cardContainerL = document.getElementById('card_container_left');
         var text_friend = document.getElementById('text_friend');
@@ -340,8 +356,6 @@ export async function RegisterButton() {
 
 }
 
-
-export default function LogCard() {
 
 
     return (
