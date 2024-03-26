@@ -1,6 +1,5 @@
 import './dist/createPolicy.css';
 import React, { useState } from 'react';
-import SelectInputWithModal from './test';
 function Divider() {
     return <div className="divider"></div>;
 }
@@ -10,19 +9,16 @@ export default function CreatePolicy() {
     const [policyName, setPolicyName] = useState('');
     const [company, setCompany] = useState('');
     const [description, setDescription] = useState('');
+    const [drugs, setDrugs] = useState('');
+    const [curableDisease, setCurableDisease] = useState('');
     const [file, setFile] = useState(null);
+
+    const diseaseOptions = ["Broken bone", "Hepatitis", "Cancer", "Stroke", "Asthma"];
+    const drugsOptions = ["Aspirin", "Paracetamol", "Ibuprofen", "Diazepam", "Metformin"];
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
         setFile(selectedFile);
-    };
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-
-    const handleOpenModal = () => {
-        setModalIsOpen(true);
-    };
-    const handleCloseModal = () => {
-        setModalIsOpen(false);
     };
     return (
         <div className='create-form-cont'>
@@ -43,23 +39,24 @@ export default function CreatePolicy() {
                         <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
                     </div>
                     <Divider />
-                    {/* <div className="form-group">
+                    <div className="form-group" >
                         <label>Хвороби які покриваються:</label>
-                        <input type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
+                        <input list='disease' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
+                        <datalist id="disease">
+                            {diseaseOptions.map((option, index) => (
+                                <option key={index} value={option} />
+                            ))}
+                        </datalist>
                     </div>
                     <Divider />
                     <div className="form-group">
                         <label>Ліки які покриваються:</label>
-                        <input type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
-                    </div> */}
-                    <div className="form-group">
-                        <label>Хвороби які покриваються:</label>
-                        <input type="text" />
-
-                        <button className='modal-btn' onClick={handleOpenModal}>Select Option</button>
-                        {modalIsOpen && (
-                            <SelectInputWithModal onClose={handleCloseModal} />
-                        )}
+                        <input list='drugs' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
+                        <datalist id="drugs">
+                            {drugsOptions.map((option, index) => (
+                                <option key={index} value={option} />
+                            ))}
+                        </datalist>
                     </div>
                     <Divider />
                     <div className="form-group-desc">
