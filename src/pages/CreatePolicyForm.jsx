@@ -1,13 +1,12 @@
+import CreatePolicy from "../components/CreatePolicy/createPolicy"
 import Header from '../components/MainHeader/header';
 import Footer from '../components/MainFooter/footer';
-import LogCard from '../components/LoginCard/logcard';
 
-export default function UserLoginRegistration() {
+export default function CreatePolicyForm() {
     return (
         <div className="Main">
             <Header />
-            {/* <RegCard /> */}
-            <LogCard />
+            <CreatePolicy />
             <Footer />
         </div>
     )

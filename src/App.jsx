@@ -1,9 +1,9 @@
 import './App.css';
-import Header from './components/MainHeader/header';
-import Footer from './components/MainFooter/footer';
 import CompaniesTable from './pages/CompaniesTable';
 import LogCard from './pages/UserLoginRegistration';
+import CreatePolicyForm from './pages/CreatePolicyForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SelectInputWithModal from './components/CreatePolicy/test';
 
 
 export default function App() {
@@ -12,6 +12,9 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/companies' element={<CompaniesTable />} />
+          <Route path='/create' element={<CreatePolicyForm />} />
+          <Route path='/test' element={<SelectInputWithModal />} />
+
           <Route path='/' element={<LogCard />} />
         </Routes>
       </BrowserRouter>
