@@ -59,16 +59,22 @@ export default function CreatePolicy() {
                         </datalist>
                     </div>
                     <Divider />
-                    <div className="form-group-desc">
+                    <div className="form-group-big">
                         <label>Опис полісу:</label>
                         <textarea className='desc-input' type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                     <Divider />
-                    <div className="form-group">
+                    <div className="form-group-big">
                         <label>PDF Документів:</label>
-                        <input type="file" onChange={handleFileChange} />
+                        <div className='pdf-cont'>
+                            <input type="file" onChange={handleFileChange} />
+                        </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <div className='submit-btn-cont'>
+                        <button className='submit-policy-btn'>
+                            <p>ЗБЕРЕГТИ</p>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

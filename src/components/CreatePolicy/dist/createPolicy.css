@@ -31,7 +31,7 @@
   align-items: center;
   margin-bottom: 1.5vh;
 }
-.form-group-desc {
+.form-group-big {
   display: flex;
   flex-direction: row;
   margin-bottom: 1.5vh;
@@ -78,4 +78,69 @@ button[type='submit']:hover {
   background-color: #bfbfbf;
   margin-bottom: 3vh;
   margin-top: 1vh;
+}
+.submit-policy-btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  --primary-color: #39ab59;
+  --hovered-color: #39ab59;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  font-size: 0.7vw;
+}
+.submit-policy-btn p {
+  margin: 0;
+  position: relative;
+  font-size: 0.7vw;
+  color: var(--primary-color);
+}
+.submit-policy-btn::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -0.8vh;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+.submit-policy-btn p::before {
+  position: absolute;
+  content: "ЗБЕРЕГТИ";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+.submit-policy-btn:hover::after {
+  width: 100%;
+}
+.submit-policy-btn:hover p::before {
+  width: 100%;
+}
+.submit-btn-cont {
+  border-radius: 0.5vw;
+  height: 6vh;
+  width: 13vw;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  justify-content: center;
+  margin: 0vw 0vw 3vw 47vw;
+}
+.pdf-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 46.4vw;
+  border-radius: 0.8vw;
+  height: 34vh;
+  margin-bottom: 4vh;
 }
