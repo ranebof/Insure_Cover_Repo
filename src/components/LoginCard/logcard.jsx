@@ -1,26 +1,34 @@
 import React, {useState} from "react";
 import authService from "../../service/login";
 import "./dist/logcard.css";
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function LogCard() {
     const [isClicked, setIsClicked] = useState(false)
     const [isRegistered,setIsRegistered] = useState(true)
+    const navigate = useNavigate();
+
     
 
 const regFunct = async () => {
     await authService.register({ username: "hello@gmail.com", password: "pass1234225", email: "hello@gmail.com" }, "xx", "xx", "hello@gmail.com", "xx", "xx", "hello@gmail.com");
+
 }
 
 
 const logFunct = async() => {
+    
     const username = "xx@gmail.com"
     const password = "pass12345"
     await authService.login(username,password)
 }
 
 function LogEvent() {
+
     
+
     if(isClicked === false){
         setIsRegistered(false)
         var cardContainerR = document.getElementById('card_container_right');
@@ -164,10 +172,14 @@ function LogEvent() {
         form_right_login_d.style.display = 'block'
 
         setIsClicked(true)
+
+        
     }
     else {
+        
         logFunct()
         setIsClicked(false)
+           
     } 
         
 
@@ -188,9 +200,15 @@ async function RegisterButton() {
     
 
     if(isRegistered === true){
+        navigate("/create")
         await regFunct();
+        
+
+        
+    
     }
     else {
+
         setIsRegistered(true)
         setIsClicked(false)
         var cardContainerR = document.getElementById('card_container_right');

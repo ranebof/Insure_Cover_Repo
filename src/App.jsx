@@ -9,7 +9,6 @@ export default function App() {
     <div className="Main">
       <BrowserRouter>
         <Routes>
-          <Route path='/companies' element={<CompaniesTable />} />
           <Route path='/create' element={<CreatePolicyForm />} />
           <Route path='/' element={<LogCard />} />
         </Routes>
