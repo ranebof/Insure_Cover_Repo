@@ -42,7 +42,7 @@ label {
   font-weight: 800;
   font-size: 1vw;
 }
-input {
+.input_create {
   width: 80vw;
   padding: 0.5vw;
   margin-left: 5vw;
@@ -51,7 +51,7 @@ input {
   font-size: 1vw;
   font-weight: 500;
 }
-input:focus {
+.input_create:focus {
   outline: none;
 }
 .desc-input {

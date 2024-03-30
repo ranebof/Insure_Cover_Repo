@@ -26,22 +26,22 @@ export default function CreatePolicy() {
                 <form className="form">
                     <div className="form-group">
                         <label>Номер полісу:</label>
-                        <input type="text" value={policyNumber} onChange={(e) => setPolicyNumber(e.target.value)} />
+                        <input className='input_create' type="text" value={policyNumber} onChange={(e) => setPolicyNumber(e.target.value)} />
                     </div>
                     <Divider />
                     <div className="form-group">
                         <label>Назва полісу:</label>
-                        <input type="text" value={policyName} onChange={(e) => setPolicyName(e.target.value)} />
+                        <input className='input_create' type="text" value={policyName} onChange={(e) => setPolicyName(e.target.value)} />
                     </div>
                     <Divider />
                     <div className="form-group">
                         <label>Компанія:</label>
-                        <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
+                        <input className='input_create'  type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
                     </div>
                     <Divider />
                     <div className="form-group" >
                         <label>Хвороби які покриваються:</label>
-                        <input list='disease' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
+                        <input className='input_create' list='disease' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
                         <datalist id="disease">
                             {diseaseOptions.map((option, index) => (
                                 <option key={index} value={option} />
@@ -51,13 +51,13 @@ export default function CreatePolicy() {
                     <Divider />
                     <div className="form-group">
                         <label>Ліки які покриваються:</label>
-                        <input list='drugs' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
+                        <input className='input_create' list='drugs' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
                         <datalist id="drugs">
                             {drugsOptions.map((option, index) => (
                                 <option key={index} value={option} />
                             ))}
                         </datalist>
-                    </div>
+                    </div> 
                     <Divider />
                     <div className="form-group-big">
                         <label>Опис полісу:</label>
@@ -67,7 +67,7 @@ export default function CreatePolicy() {
                     <div className="form-group-big">
                         <label>PDF Документів:</label>
                         <div className='pdf-cont'>
-                            <input type="file" onChange={handleFileChange} />
+                            <input className='input_create' type="file" onChange={handleFileChange} />
                         </div>
                     </div>
                     <div className='submit-btn-cont'>

@@ -14,7 +14,6 @@ export default function LogCard() {
 
 const regFunct = async () => {
     await authService.register({ username: "hello@gmail.com", password: "pass1234225", email: "hello@gmail.com" }, "xx", "xx", "hello@gmail.com", "xx", "xx", "hello@gmail.com");
-
 }
 
 
@@ -179,7 +178,8 @@ function LogEvent() {
         
         logFunct()
         setIsClicked(false)
-           
+        navigate("/companies")
+        
     } 
         
 
@@ -200,7 +200,6 @@ async function RegisterButton() {
     
 
     if(isRegistered === true){
-        navigate("/create")
         await regFunct();
         
 
