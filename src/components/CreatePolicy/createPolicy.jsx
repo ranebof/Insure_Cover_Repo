@@ -11,15 +11,23 @@ export default function CreatePolicy() {
     const [description, setDescription] = useState('');
     const [drugs, setDrugs] = useState('');
     const [curableDisease, setCurableDisease] = useState('');
-    const [file, setFile] = useState(null);
 
     const diseaseOptions = ["Broken bone", "Hepatitis", "Cancer", "Stroke", "Asthma"];
     const drugsOptions = ["Aspirin", "Paracetamol", "Ibuprofen", "Diazepam", "Metformin"];
 
+    const [isUploaded, setIsUploaded] = useState(false);
+
     const handleFileChange = (event) => {
-        const selectedFile = event.target.files[0];
-        setFile(selectedFile);
+        const file = event.target.files[0];
+        if (file && file.type === "application/pdf") {
+            setIsUploaded(true);
+        } else {
+            alert("Please upload a PDF file.");
+            setIsUploaded(false); // Reset upload status on invalid file type
+        }
     };
+
+
     return (
         <div className='create-form-cont'>
             <div className="form-container">
@@ -36,7 +44,7 @@ export default function CreatePolicy() {
                     <Divider />
                     <div className="form-group">
                         <label>Компанія:</label>
-                        <input className='input_create'  type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
+                        <input className='input_create' type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
                     </div>
                     <Divider />
                     <div className="form-group" >
@@ -57,7 +65,7 @@ export default function CreatePolicy() {
                                 <option key={index} value={option} />
                             ))}
                         </datalist>
-                    </div> 
+                    </div>
                     <Divider />
                     <div className="form-group-big">
                         <label>Опис полісу:</label>
@@ -66,8 +74,15 @@ export default function CreatePolicy() {
                     <Divider />
                     <div className="form-group-big">
                         <label>PDF Документів:</label>
-                        <div className='pdf-cont'>
-                            <input className='input_create' type="file" onChange={handleFileChange} />
+                        <div className="pdf-cont">
+                            <input
+                                type="file"
+                                className="input_create"
+                                id="fileInput"
+                                accept=".pdf"
+                                onChange={handleFileChange}
+                            />
+                            <label htmlFor="fileInput" className={`upload-icon ${isUploaded ? 'uploaded' : ''}`}></label>
                         </div>
                     </div>
                     <div className='submit-btn-cont'>

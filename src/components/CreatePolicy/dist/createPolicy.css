@@ -63,6 +63,9 @@ label {
   height: 20vh;
   resize: none;
 }
+#fileInput {
+  display: none;
+}
 button[type='submit'] {
   width: 100%;
   background-color: #007bff;
@@ -139,8 +142,26 @@ button[type='submit']:hover {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  width: 46.4vw;
+  width: 51.4vw;
   border-radius: 0.8vw;
   height: 34vh;
   margin-bottom: 4vh;
+}
+.file-upload-container {
+  position: relative;
+  display: inline-block;
+}
+.upload-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/public/images/uploadPdf.png");
+}
+.uploaded {
+  background-image: url("/public/images/check-mark.png");
 }
