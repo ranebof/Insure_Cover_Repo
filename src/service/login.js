@@ -5,7 +5,7 @@ const API = "http://13.49.244.146:8000/";
 
 
 const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {
-     return axios.post(API + "register/",{
+     return axios.post(API + "api/auth/register/",{
       user,first_name,last_name,email,phone_number,company_name,company_email       
      }, {
        headers: {
@@ -16,7 +16,7 @@ const register = (user,first_name,last_name,email,phone_number,company_name,comp
 }
 
 const login = (username,passwoord) => {
-  return axios.post(API+ "login/",{
+  return axios.post(API+ "api/auth/login/",{
       username,passwoord
   })
   .then(function (response) {
@@ -38,16 +38,16 @@ const login = (username,passwoord) => {
 
 const authService = {
     register,
-    login,
-    checkUserExists: async function(username) {
-      try {
-        const response = await axios.get(API + "users/" + username);
-        return response.status === 200;
-      } catch (error) {
-        console.error("Error checking user existence:", error);
-        return false;
-      }
-    },
+    login
+    // checkUserExists: async function(username) {
+    //   try {
+    //     const response = await axios.get(API + "api/auth/get_data/" + username);
+    //     return response.status === 200;
+    //   } catch (error) {
+    //     console.error("Error checking user existence:", error);
+    //     return false;
+    //   }
+    // },
 }
 
 export default authService

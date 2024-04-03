@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var API = "http://13.49.244.146:8000/";
 
 var register = function register(user, first_name, last_name, email, phone_number, company_name, company_email) {
-  return _axios["default"].post(API + "register/", {
+  return _axios["default"].post(API + "api/auth/register/", {
     user: user,
     first_name: first_name,
     last_name: last_name,
@@ -29,7 +29,7 @@ var register = function register(user, first_name, last_name, email, phone_numbe
 };
 
 var login = function login(username, passwoord) {
-  return _axios["default"].post(API + "login/", {
+  return _axios["default"].post(API + "api/auth/login/", {
     username: username,
     passwoord: passwoord
   }).then(function (response) {
@@ -49,34 +49,16 @@ var login = function login(username, passwoord) {
 
 var authService = {
   register: register,
-  login: login,
-  checkUserExists: function checkUserExists(username) {
-    var response;
-    return regeneratorRuntime.async(function checkUserExists$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return regeneratorRuntime.awrap(_axios["default"].get(API + "users/" + username));
+  login: login // checkUserExists: async function(username) {
+  //   try {
+  //     const response = await axios.get(API + "api/auth/get_data/" + username);
+  //     return response.status === 200;
+  //   } catch (error) {
+  //     console.error("Error checking user existence:", error);
+  //     return false;
+  //   }
+  // },
 
-          case 3:
-            response = _context.sent;
-            return _context.abrupt("return", response.status === 200);
-
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            console.error("Error checking user existence:", _context.t0);
-            return _context.abrupt("return", false);
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, null, null, [[0, 7]]);
-  }
 };
 var _default = authService;
 exports["default"] = _default;

@@ -17,14 +17,14 @@ export default function LogCard() {
 
     const regFunct = async () => {
         try {
-            const userExists = await authService.checkUserExists(userName);
+            //const userExists = await authService.checkUserExists(userName);
 
-            if (userExists) {
-                console.log('User already exists');
-                return;
-            }
-
-            await authService.register({ username: userName, password: pass, email: userName }, "xx", "xx", userName, "xx", "xx", userName);
+            // if (userExists) {
+            //     console.log('User already exists');
+            //     return;
+            // }
+            
+            await authService.register({ username: userName, password: pass, email: userName });
         } catch (error) {
             console.error('Error during registration:', error);
         }
@@ -228,6 +228,7 @@ export default function LogCard() {
 
         if (isRegistered === true) {
             await regFunct();
+            navigate("/create")
         }
         else {
 
@@ -407,8 +408,10 @@ export default function LogCard() {
                 <div id="circle_l" className="circle_l"><img src="./images/google_ico.png" className="google_ico" alt=""></img></div>
                 <div id="use_email" className="use_email">Або використайте вашу пошту для реєстрації </div>
                 <form id="log_form" className="log-form">
-                    <input id="form_field" className="form-field" type="text" placeholder="Ім`я" />
-                    <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище" />
+                    <input id="form_field" className="form-field" type="text" placeholder="Ім`я"  value={userName}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище"  />
                     <input id="form_field_t" className="form-field" type="email" placeholder="Email" />
                 </form>
                 <div className="log-button">
@@ -422,8 +425,7 @@ export default function LogCard() {
                     <div id="enter_text_r_con" className="enter_text_r_con"><p className="enter_text_r" id="text_enter_down">Увійди в свій персональний аккаунт для продовження роботи з нами</p></div>
                 </div>
                 <form id="form_right_login_con" className="form_right_login_con">
-                    <input id="form_right_login_u" className="form_right_login_u" type="text" placeholder="Пошта" value={userName}
-                        onChange={(e) => setUsername(e.target.value)} />
+                    <input id="form_right_login_u" className="form_right_login_u" type="text" placeholder="Пошта"  />
                     <input id="form_right_login_d" className="form_right_login_d" type="text" placeholder="Пароль" value={pass}
                         onChange={(e) => setPassword(e.target.value)} />
                 </form>
