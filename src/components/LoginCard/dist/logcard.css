@@ -100,7 +100,7 @@
   background-image: url("/public/images/email_icon.png");
   background-position: 1vw 2.2vh;
 }
-.form-field:nth-child(4) {
+.form-field:nth-child(5) {
   background-image: url("/public/images/password_icon.png");
   background-position: 0.9vw 1.6vh;
   visibility: hidden;
@@ -203,6 +203,7 @@
   align-items: center;
   align-self: center;
   text-align: center;
+  margin-top: 7.5vh;
 }
 .enter_form {
   width: 60vw;

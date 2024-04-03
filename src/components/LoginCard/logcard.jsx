@@ -405,14 +405,14 @@ export default function LogCard() {
                 <div className="text_container_l">
                     <span id="make_acc_text" className="make_acc_text">Створити Обліковий запис</span>
                 </div>
-                <div id="circle_l" className="circle_l"><img src="./images/google_ico.png" className="google_ico" alt=""></img></div>
-                <div id="use_email" className="use_email">Або використайте вашу пошту для реєстрації </div>
                 <form id="log_form" className="log-form">
                     <input id="form_field" className="form-field" type="text" placeholder="Ім`я"  value={userName}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище"  />
-                    <input id="form_field_t" className="form-field" type="email" placeholder="Email" />
+                    <input id="form_field_s" className="form-field" type="text" placeholder="Email"  />
+                    <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" />
+
                 </form>
                 <div className="log-button">
                     <button id="next_button" className="l-button" onClick={RegisterButton}>Далі</button>
