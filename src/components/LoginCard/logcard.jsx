@@ -10,6 +10,7 @@ export default function LogCard() {
     const [isRegistered, setIsRegistered] = useState(true)
     const [userName, setUsername] = useState('')
     const [pass, setPassword] = useState('')
+    const [email, setEmail] = useState('')
 
     const navigate = useNavigate();
 
@@ -23,8 +24,8 @@ export default function LogCard() {
             //     console.log('User already exists');
             //     return;
             // }
-            
-            await authService.register({ username: userName, password: pass, email: userName });
+
+            await authService.register({ username: userName, password: pass, email: email });
         } catch (error) {
             console.error('Error during registration:', error);
         }
@@ -406,14 +407,16 @@ export default function LogCard() {
                     <span id="make_acc_text" className="make_acc_text">Створити Обліковий запис</span>
                 </div>
                 <form id="log_form" className="log-form">
-                    <input id="form_field" className="form-field" type="text" placeholder="Email"  value={userName}
+                    <input id="form_field" className="form-field" type="text" placeholder="Email" value={userName}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                    <input id="form_field_s" className="form-field" type="text" placeholder="Підтвердіть email" />
-                    <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище"  />
-                    
-                    <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" value={pass} 
-                        onChange={(e) => setPassword(e.target.value)} 
+                    <input id="form_field_s" className="form-field" type="text" placeholder="Підтвердіть email" value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище" />
+
+                    <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" value={pass}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
 
                 </form>
@@ -428,9 +431,9 @@ export default function LogCard() {
                     <div id="enter_text_r_con" className="enter_text_r_con"><p className="enter_text_r" id="text_enter_down">Увійди в свій персональний аккаунт для продовження роботи з нами</p></div>
                 </div>
                 <form id="form_right_login_con" className="form_right_login_con">
-                    <input id="form_right_login_u" className="form_right_login_u" type="text" placeholder="Пошта"  />
-                    <input id="form_right_login_d" className="form_right_login_d" type="text" placeholder="Пароль" 
-                        />
+                    <input id="form_right_login_u" className="form_right_login_u" type="text" placeholder="Пошта" />
+                    <input id="form_right_login_d" className="form_right_login_d" type="text" placeholder="Пароль"
+                    />
                 </form>
                 <div id="button_r" className="enter_button_r" onClick={LogEvent}>Увійти</div>
 
