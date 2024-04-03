@@ -406,12 +406,15 @@ export default function LogCard() {
                     <span id="make_acc_text" className="make_acc_text">Створити Обліковий запис</span>
                 </div>
                 <form id="log_form" className="log-form">
-                    <input id="form_field" className="form-field" type="text" placeholder="Ім`я"  value={userName}
+                    <input id="form_field" className="form-field" type="text" placeholder="Email"  value={userName}
                         onChange={(e) => setUsername(e.target.value)}
                     />
+                    <input id="form_field_s" className="form-field" type="text" placeholder="Підтвердіть email" />
                     <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище"  />
-                    <input id="form_field_s" className="form-field" type="text" placeholder="Email"  />
-                    <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" />
+                    
+                    <input id="form_field_t" className="form-field" type="password" placeholder="Пароль" value={pass} 
+                        onChange={(e) => setPassword(e.target.value)} 
+                    />
 
                 </form>
                 <div className="log-button">
@@ -426,8 +429,8 @@ export default function LogCard() {
                 </div>
                 <form id="form_right_login_con" className="form_right_login_con">
                     <input id="form_right_login_u" className="form_right_login_u" type="text" placeholder="Пошта"  />
-                    <input id="form_right_login_d" className="form_right_login_d" type="text" placeholder="Пароль" value={pass}
-                        onChange={(e) => setPassword(e.target.value)} />
+                    <input id="form_right_login_d" className="form_right_login_d" type="text" placeholder="Пароль" 
+                        />
                 </form>
                 <div id="button_r" className="enter_button_r" onClick={LogEvent}>Увійти</div>
 
