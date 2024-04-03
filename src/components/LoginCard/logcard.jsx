@@ -410,7 +410,7 @@ export default function LogCard() {
                     <input id="form_field" className="form-field" type="text" placeholder="Email" value={userName}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                    <input id="form_field_s" className="form-field" type="text" placeholder="Підтвердіть email" value={email}
+                    <input id="form_field_e" className="form-field" type="text" placeholder="Підтвердіть email" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input id="form_field_s" className="form-field" type="text" placeholder="Прізвище" />
