@@ -11,15 +11,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var API = "http://13.49.244.146:8000/";
 
-var register = function register(user, first_name, last_name, email, phone_number, company_name, company_email) {
+var register = function register(user, password, email) {
   return _axios["default"].post(API + "api/auth/register/", {
     user: user,
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-    phone_number: phone_number,
-    company_name: company_name,
-    company_email: company_email
+    password: password,
+    email: email
   }, {
     headers: {
       "Accept": "*/*",

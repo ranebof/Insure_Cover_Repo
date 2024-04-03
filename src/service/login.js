@@ -4,9 +4,9 @@ import axios from "axios";
 const API = "http://13.49.244.146:8000/";
 
 
-const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {
+const register = (user,password,email) => {
      return axios.post(API + "api/auth/register/",{
-      user,first_name,last_name,email,phone_number,company_name,company_email       
+      user,password,email      
      }, {
        headers: {
           "Accept": "*/*",
