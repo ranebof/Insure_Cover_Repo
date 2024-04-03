@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API = "http://16.170.143.105:8000/api/";
+const API = "http://13.49.244.146:8000/";
 
 
 const register = (user,first_name,last_name,email,phone_number,company_name,company_email) => {

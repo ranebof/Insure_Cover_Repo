@@ -9,7 +9,7 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var API = "http://16.170.143.105:8000/api/";
+var API = "http://13.49.244.146:8000/";
 
 var register = function register(user, first_name, last_name, email, phone_number, company_name, company_email) {
   return _axios["default"].post(API + "register/", {

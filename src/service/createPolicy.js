@@ -1,20 +1,27 @@
 import axios from "axios";
 
-const API = "http://16.170.143.105:8000/api/";
+const API = "http://13.49.244.146:8000/";
 
-const createPolicy = (number,name,description,company) => {
-    return axios.post(API + "create/",{
-        number,name,description,company
-    },{
+const createPolicy = (number, name, description, company) => {
+    return axios.post(API + "create/", {
+        number, name, description, company
+    }, {
         headers: {
-            "Accept":"*/*",
+            "Accept": "*/*",
             "Content-Type": "application/json",
         }
     })
+    .then(response => {
+        return response.data;
+    })
+    .catch(error => {
+        console.error("Сталася помилка при створенні полісу:", error);
+        throw error;
+    });
 }
 
-const createService =  {
+const createService = {
     createPolicy
 }
 
-export default createService
+export default createService;

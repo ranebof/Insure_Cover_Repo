@@ -9,7 +9,7 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var API = "http://16.170.143.105:8000/api/";
+var API = "http://13.49.244.146:8000/";
 
 var createPolicy = function createPolicy(number, name, description, company) {
   return _axios["default"].post(API + "create/", {
@@ -22,6 +22,11 @@ var createPolicy = function createPolicy(number, name, description, company) {
       "Accept": "*/*",
       "Content-Type": "application/json"
     }
+  }).then(function (response) {
+    return response.data;
+  })["catch"](function (error) {
+    console.error("Сталася помилка при створенні полісу:", error);
+    throw error;
   });
 };
 
