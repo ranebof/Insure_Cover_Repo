@@ -44,7 +44,7 @@ export default function LogCard() {
 
             if (response.success) {
                 console.log('Login successful');
-                navigate("/companies");
+                window.location.href("/create");
             } else {
                 console.log('Login failed: Incorrect username or password');
             }
@@ -61,7 +61,7 @@ export default function LogCard() {
         else {
             logFunct()
             setIsClicked(false)
-            navigate("/companies")
+            navigate("/create")
         }
     }
 
@@ -100,10 +100,10 @@ export default function LogCard() {
                         <h1>Вхід</h1>
 
                         <span>Або використайте вашу пошту для входу</span>
-                        <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" />
-                        <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" />
+                        <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={userName} onChange={(e) => setUsername(e.target.value)} />
+                        <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
                         <a className="forgot-pass-a" href="/">Forgot your password?</a>
-                        <button className="auth-card-btn">далі</button>
+                        <button className="auth-card-btn " onClick={logFunct}>далі</button>
                     </form>
                 </div>
                 <div className="overlay-container">
