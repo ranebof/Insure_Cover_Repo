@@ -1,10 +1,21 @@
 import './dist/createPolicy.css';
 import React, { useState } from 'react';
+import createPolicyService from "../../service/createPolicy";
 function Divider() {
     return <div className="divider"></div>;
 }
 
 export default function CreatePolicy() {
+
+
+    const createPol = async () => {
+        try {
+            await createPolicyService.createPolicy({ number: policyNumber, name: policyName, description: description, company: company })
+        } catch (error) {
+            console.error("Error during post of policy", error);
+        }
+    }
+
     const [policyNumber, setPolicyNumber] = useState('');
     const [policyName, setPolicyName] = useState('');
     const [company, setCompany] = useState('');
@@ -23,9 +34,10 @@ export default function CreatePolicy() {
             setIsUploaded(true);
         } else {
             alert("Please upload a PDF file.");
-            setIsUploaded(false); // Reset upload status on invalid file type
+            setIsUploaded(false);
         }
     };
+
 
 
     return (
@@ -86,7 +98,7 @@ export default function CreatePolicy() {
                         </div>
                     </div>
                     <div className='submit-btn-cont'>
-                        <button className='submit-policy-btn'>
+                        <button className='submit-policy-btn' onClick={createPol}>
                             <p>ЗБЕРЕГТИ</p>
                         </button>
                     </div>
