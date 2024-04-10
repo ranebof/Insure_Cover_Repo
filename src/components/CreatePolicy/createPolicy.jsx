@@ -8,6 +8,19 @@ function Divider() {
 export default function CreatePolicy() {
 
 
+
+
+    const [policyNumber, setPolicyNumber] = useState('');
+    const [policyName, setPolicyName] = useState('');
+    const [company, setCompany] = useState('');
+    const [description, setDescription] = useState('');
+    const [drugs, setDrugs] = useState('');
+    const [curableDisease, setCurableDisease] = useState('');
+    const [postButtonVisible, setPostButtonVisible] = useState(false);
+
+
+    const [isUploaded, setIsUploaded] = useState(false);
+
     const createPol = async () => {
         try {
             await createPolicyService.createPolicy({ number: policyNumber, name: policyName, description: description, company: company })
@@ -16,15 +29,10 @@ export default function CreatePolicy() {
         }
     }
 
-    const [policyNumber, setPolicyNumber] = useState('');
-    const [policyName, setPolicyName] = useState('');
-    const [company, setCompany] = useState('');
-    const [description, setDescription] = useState('');
-    const [drugs, setDrugs] = useState('');
-    const [curableDisease, setCurableDisease] = useState('');
-
-
-    const [isUploaded, setIsUploaded] = useState(false);
+    const savePolicyData = (e) => {
+        e.preventDefault();
+        setPostButtonVisible(true);
+    }
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -92,10 +100,16 @@ export default function CreatePolicy() {
                         </div>
                     </div>
                     <div className='submit-btn-cont'>
-                        <button className='submit-policy-btn' onClick={createPol}>
-                            <p>ЗБЕРЕГТИ</p>
+                        <button className='submit-policy-btn' onClick={(event) => { savePolicyData(event) }}>
+                            <p>зберегти</p>
                         </button>
                     </div>
+                    <div className={`post-btn-cont ${postButtonVisible ? 'visible' : ''}`}>
+                        <button className='post-policy-btn' onClick={createPol}>
+                            <p>опублікувати</p>
+                        </button>
+                    </div>
+
                 </form>
             </div>
         </div>

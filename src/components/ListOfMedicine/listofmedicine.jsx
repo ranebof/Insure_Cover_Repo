@@ -2,9 +2,6 @@ import './dist/listofmedicine.css';
 
 export default function CreatePolicy() {
 
-
-
-
     return (
         <div className='list_of_medicine_con'>
             <div className='upper_side'>
@@ -14,7 +11,7 @@ export default function CreatePolicy() {
             </div>
 
             <div className='med_list_con'>
-                
+
             </div>
         </div>
     )
