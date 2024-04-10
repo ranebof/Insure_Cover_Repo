@@ -1,0 +1,40 @@
+.list_of_medicine_con {
+  width: 80vw;
+  height: 70vh;
+  margin: auto;
+  padding: 1.3vh;
+  border-radius: 1.3vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(211deg, #39ab59 0%, #39ab8c 94%, #39ab90 100%);
+  box-shadow: 1vw 2vh 2vw 0.5vw rgba(0,0,0,0.15);
+  overflow: auto;
+}
+.upper_side {
+  width: auto;
+  height: auto;
+  display: flex;
+}
+.arrow_back {
+  width: 1.5vw;
+  height: 2.5vh;
+  margin: 4.4vh 0 0 2.5vw;
+  cursor: pointer;
+}
+.search_box {
+  width: 70vw;
+  height: 3vh;
+  margin-top: 4vh;
+  margin-left: 1.75vw;
+  background-color: #fff;
+  border: none;
+  border-radius: 1vh;
+}
+.search_icon {
+  position: absolute;
+  right: 14.5vw;
+  top: 18vh;
+  width: 1vw;
+  height: 2vh;
+  cursor: pointer;
+}
