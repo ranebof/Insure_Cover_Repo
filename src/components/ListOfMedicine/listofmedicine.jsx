@@ -11,6 +11,9 @@ export default function CreatePolicy() {
                 <img className='arrow_back' src="./images/BackStrilka.png"></img>
                 <input className='search_box'></input>
                 <img className='search_icon' src='./images/search_icon.png'></img>
+            </div>
+
+            <div className='med_list_con'>
                 
             </div>
         </div>

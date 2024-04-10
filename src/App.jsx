@@ -13,7 +13,7 @@ export default function App() {
           <Route path='/create' element={<CreatePolicyForm />} />
           <Route path='/' element={<LogCard />} />
           <Route path='/companies' element={<CompaniesTable />} />
-          <Route path='/listofmedicine' element={<ListOfMedicine />} />
+          <Route path='/medicine' element={<ListOfMedicine />} />
 
         </Routes>
       </BrowserRouter>
