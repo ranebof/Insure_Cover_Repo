@@ -23,8 +23,6 @@ export default function CreatePolicy() {
     const [drugs, setDrugs] = useState('');
     const [curableDisease, setCurableDisease] = useState('');
 
-    const diseaseOptions = ["Broken bone", "Hepatitis", "Cancer", "Stroke", "Asthma"];
-    const drugsOptions = ["Aspirin", "Paracetamol", "Ibuprofen", "Diazepam", "Metformin"];
 
     const [isUploaded, setIsUploaded] = useState(false);
 
@@ -61,22 +59,18 @@ export default function CreatePolicy() {
                     <Divider />
                     <div className="form-group" >
                         <label>Хвороби які покриваються:</label>
-                        <input className='input_create' list='disease' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
-                        <datalist id="disease">
-                            {diseaseOptions.map((option, index) => (
-                                <option key={index} value={option} />
-                            ))}
-                        </datalist>
+                        <div className='test'>
+                            <input className='input_create' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
+                            <button className='addOptionBtn'>Додати</button>
+                        </div>
                     </div>
                     <Divider />
                     <div className="form-group">
                         <label>Ліки які покриваються:</label>
-                        <input className='input_create' list='drugs' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
-                        <datalist id="drugs">
-                            {drugsOptions.map((option, index) => (
-                                <option key={index} value={option} />
-                            ))}
-                        </datalist>
+                        <div className='test'>
+                            <input className='input_create' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
+                            <button className='addOptionBtn'>Додати</button>
+                        </div>
                     </div>
                     <Divider />
                     <div className="form-group-big">
