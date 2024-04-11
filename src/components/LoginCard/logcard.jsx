@@ -44,7 +44,7 @@ export default function LogCard() {
 
             if (response.success) {
                 console.log('Login successful');
-                window.location.href("/create");
+                navigate("/create")
             } else {
                 console.log('Login failed: Incorrect username or password');
             }
@@ -61,7 +61,6 @@ export default function LogCard() {
         else {
             logFunct()
             setIsClicked(false)
-            navigate("/create")
         }
     }
 
