@@ -20,12 +20,12 @@ export default function LogCard() {
 
     const regFunct = async () => {
         try {
-            //const userExists = await authService.checkUserExists(userName);
+            const userExists = await authService.checkUserExists(userName);
 
-            // if (userExists) {
-            //     console.log('User already exists');
-            //     return;
-            // }
+            if (userExists) {
+                console.log('User already exists');
+                return;
+            }
 
             await authService.register({ username: userName, password: pass, email: email });
         } catch (error) {
@@ -44,13 +44,14 @@ export default function LogCard() {
 
             if (response.success) {
                 console.log('Login successful');
-                navigate("/create")
+               
             } else {
                 console.log('Login failed: Incorrect username or password');
             }
         } catch (error) {
             console.error('Error during login:', error);
         }
+        window.location.href = "/create"
     }
 
     function LogEvent() {
@@ -95,7 +96,7 @@ export default function LogCard() {
                     </form>
                 </div>
                 <div className="auth-form-container sign-in-container">
-                    <form className="auth-form" action="#">
+                    <div className="auth-form" action="#">
                         <h1>Вхід</h1>
 
                         <span>Або використайте вашу пошту для входу</span>
@@ -103,7 +104,7 @@ export default function LogCard() {
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
                         <a className="forgot-pass-a" href="/">Forgot your password?</a>
                         <button className="auth-card-btn " onClick={logFunct}>далі</button>
-                    </form>
+                    </div>
                 </div>
                 <div className="overlay-container">
                     <div className="overlay">
