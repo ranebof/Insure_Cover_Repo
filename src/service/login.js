@@ -6,7 +6,7 @@ const API = "http://13.49.244.146:8000/";
 
 const register = (user,password,email) => {
      return axios.post(API + "api/auth/register/",{
-      user,password,email      
+      user,password,email     
      }, {
        headers: {
           "Accept": "*/*",

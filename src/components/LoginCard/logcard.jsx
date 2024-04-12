@@ -20,14 +20,9 @@ export default function LogCard() {
 
     const regFunct = async () => {
         try {
-            const userExists = await authService.checkUserExists(userName);
-
-            if (userExists) {
-                console.log('User already exists');
-                return;
-            }
 
             await authService.register({ username: userName, password: pass, email: email });
+           // window.location.href = '/create'
         } catch (error) {
             console.error('Error during registration:', error);
         }
@@ -41,17 +36,19 @@ export default function LogCard() {
         // const password = "pass12345"
         try {
             const response = await authService.login(userName, pass);
-
             if (response.success) {
-                console.log('Login successful');
-               
+                console.log("Hello!")
+
             } else {
                 console.log('Login failed: Incorrect username or password');
             }
         } catch (error) {
-            console.error('Error during login:', error);
+            
         }
-        window.location.href = "/create"
+        finally {
+            //window.location.href = "/create"
+        }
+       
     }
 
     function LogEvent() {
@@ -65,18 +62,7 @@ export default function LogCard() {
         }
     }
 
-    // var obj = [1, 2, 3]
-    async function RegisterButton() {
-        if (isRegistered === true) {
-            await regFunct();
-            navigate("/create")
-        }
-        else {
-
-            setIsRegistered(true)
-            setIsClicked(false)
-        }
-    }
+    
 
 
     return (
@@ -92,7 +78,7 @@ export default function LogCard() {
                         <input className="auth-card-inputs" type="text" placeholder="Прізвище" />
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
 
-                        <button className="auth-card-btn" onClick={RegisterButton}>далі</button>
+                        <button className="auth-card-btn" onClick={regFunct}>далі</button>
                     </form>
                 </div>
                 <div className="auth-form-container sign-in-container">
@@ -102,7 +88,6 @@ export default function LogCard() {
                         <span>Або використайте вашу пошту для входу</span>
                         <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={userName} onChange={(e) => setUsername(e.target.value)} />
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
-                        <a className="forgot-pass-a" href="/">Forgot your password?</a>
                         <button className="auth-card-btn " onClick={logFunct}>далі</button>
                     </div>
                 </div>
