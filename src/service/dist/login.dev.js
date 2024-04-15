@@ -24,21 +24,18 @@ var register = function register(user, password, email) {
   });
 };
 
-var login = function login(username, passwoord) {
+var login = function login(username, password) {
   return _axios["default"].post(API + "api/auth/login/", {
     username: username,
-    passwoord: passwoord
+    password: password
   }).then(function (response) {
-    if (response.data.token) {
+    if (response.data) {
       localStorage.setItem("token", JSON.stringify(response.data));
     } else {
-      // If the response does not contain a token, handle the error
       throw new Error("Login failed: No token received");
     }
   })["catch"](function (error) {
-    // Handle any errors that occur during the request or if the response does not contain a token
-    console.error("Login failed:", error); // Optionally, you can re-throw the error to propagate it further
-
+    console.error("Login failed:", error);
     throw error;
   });
 };

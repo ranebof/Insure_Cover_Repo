@@ -6,7 +6,7 @@ const API = "http://13.49.244.146:8000/";
 
 const register = (user,password,email) => {
      return axios.post(API + "api/auth/register/",{
-      user,password,email      
+      user,password,email     
      }, {
        headers: {
           "Accept": "*/*",
@@ -15,22 +15,19 @@ const register = (user,password,email) => {
      })
 }
 
-const login = (username,passwoord) => {
+const login = (username,password) => {
   return axios.post(API+ "api/auth/login/",{
-      username,passwoord
+      username,password 
   })
   .then(function (response) {
-    if(response.data.token){
+    if(response.data){
      localStorage.setItem("token",JSON.stringify(response.data))
     } else {
-      // If the response does not contain a token, handle the error
       throw new Error("Login failed: No token received");
     }
   })
   .catch(function (error) {
-    // Handle any errors that occur during the request or if the response does not contain a token
     console.error("Login failed:", error);
-    // Optionally, you can re-throw the error to propagate it further
     throw error;
   });
 }
