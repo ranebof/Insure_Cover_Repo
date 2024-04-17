@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import authService from "../../service/login";
 import "./dist/logcard.css";
-import { useNavigate } from 'react-router-dom';
 
 
 export default function LogCard() {
@@ -16,7 +15,6 @@ export default function LogCard() {
         setIsRightPanelActive(!isRightPanelActive);
     }
 
-    const navigate = useNavigate();
 
     const regFunct = async () => {
         try {
@@ -32,8 +30,6 @@ export default function LogCard() {
 
 
     const logFunct = async () => {
-        // const username = "xx@gmail.com"
-        // const password = "pass12345"
         try {
             const response = await authService.login(userName, pass);
             if (response.success) {
@@ -46,7 +42,7 @@ export default function LogCard() {
 
         }
         finally {
-            //window.location.href = "/create"
+            window.location.href = "/create"
         }
 
     }
@@ -75,7 +71,6 @@ export default function LogCard() {
                         <span className="change-auth-method-txt">Або використайте вашу пошту для реєстрації</span>
                         <input className="auth-card-inputs" type="text" placeholder="Логін" value={userName} onChange={(e) => setUsername(e.target.value)} />
                         <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input className="auth-card-inputs" type="text" placeholder="Прізвище" />
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
 
                         <button className="auth-card-btn" onClick={regFunct}>далі</button>
