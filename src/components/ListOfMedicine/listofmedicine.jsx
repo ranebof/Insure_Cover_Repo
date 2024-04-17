@@ -93,6 +93,9 @@ export default function CreatePolicy() {
                     </div>
                 })}
             </div>
-        </div >
+            <div className='right_side_container'>
+                
+            </div>
+        </div>
     )
 }
