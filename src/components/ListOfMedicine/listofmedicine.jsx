@@ -69,7 +69,10 @@ export default function CreatePolicy() {
                         <div className='med_sub_list_con'>
                             {!!item?.isSubShown && item.subcategories.map(subItem => {
                                 return <div className='medicineListSubItem' key={subItem.code} >
-                                    <p onClick={() => showSubSubCategories(item.code, subItem.code)}>{subItem.code} - {subItem.name}</p>
+                                    <div className="med_item_con" onClick={() => showSubSubCategories(item.code, subItem.code)}>
+                                        {subItem.code} - {subItem.name}
+
+                                    </div>
                                     <div className='med_sub_list_con'>
                                         {!!subItem?.isSubShown && subItem.subsubcategories.map(subSubItem => {
                                             return <div className='medicineListItem' key={subSubItem.code}>
