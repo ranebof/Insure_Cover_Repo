@@ -6,7 +6,7 @@
   border-radius: 1.3vh;
   display: flex;
   flex-direction: column;
-  background-color: #E4E4E4;
+  background: linear-gradient(211deg, #39ab59 0%, #39ab8c 94%, #39ab90 100%);
   box-shadow: 1vw 2vh 2vw 0.5vw rgba(0,0,0,0.15);
   overflow: auto;
 }
@@ -22,58 +22,26 @@
   cursor: pointer;
 }
 .search_box {
-  width: 42.25vw;
+  width: 70vw;
   height: 3vh;
   margin-top: 4vh;
-  padding: 2px;
   margin-left: 1.75vw;
   background-color: #fff;
   border: none;
   border-radius: 1vh;
-  background-image: url("/public/images/searchIcon.png");
-  background-position: 98% 55%;
-  background-size: 1vw;
-  background-repeat: no-repeat
 }
-
+.search_icon {
+  position: absolute;
+  right: 14.5vw;
+  top: 18vh;
+  width: 1vw;
+  height: 2vh;
+  cursor: pointer;
+}
 .med_list_con {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: start;
-  width: 42.25vw;
+  width: 70.25vw;
   height: 60vh;
   margin-left: 5.8vw;
   margin-top: 2vh;
-  overflow: auto;
-  row-gap: 15px;
-}
-.medicineListItem{
-  width: -webkit-fill-available;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: white;
-  cursor: pointer;
-  box-shadow: 0px 7px 9px #c9bdbd;
-
-}
-
-.medicineListSubItem {
-  width: -webkit-fill-available;
-  margin-left: 10px;
-  padding: 4px;
-  background-color: #f5f0f0;
-  border-radius: 10px;
-  overflow: none;
-  cursor: pointer;
-}
-
-.med_sub_list_con {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: start;
   overflow-y: auto;
-  row-gap: 10px;
-  cursor: pointer;
 }

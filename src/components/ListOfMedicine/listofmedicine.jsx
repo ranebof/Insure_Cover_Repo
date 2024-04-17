@@ -59,11 +59,6 @@ export default function CreatePolicy() {
     }
     return (
         <div className='list_of_medicine_con'>
-            <div className='upper_side'>
-                <img className='arrow_back' src="./images/BackStrilka.png" alt=''></img>
-                <input className='search_box'></input>
-            </div>
-
             <div className='med_list_con'>
                 {mList.map(item => {
                     return <div className='medicineListItem' key={item.code}>
