@@ -7,15 +7,10 @@ function Divider() {
 
 export default function CreatePolicy() {
 
-
-
-
     const [policyNumber, setPolicyNumber] = useState('');
     const [policyName, setPolicyName] = useState('');
     const [company, setCompany] = useState('');
     const [description, setDescription] = useState('');
-    const [drugs, setDrugs] = useState('');
-    const [curableDisease, setCurableDisease] = useState('');
     const [postButtonVisible, setPostButtonVisible] = useState(false);
 
 
@@ -65,22 +60,9 @@ export default function CreatePolicy() {
                         <input className='input_create' type="text" value={company} onChange={(e) => setCompany(e.target.value)} />
                     </div>
                     <Divider />
-                    <div className="form-group" >
-                        <label>Хвороби які покриваються:</label>
-                        <div className='test'>
-                            <input className='input_create' id='diseaseList' type="text" value={curableDisease} onChange={(e) => setCurableDisease(e.target.value)} />
-                            <button className='addOptionBtn'>Додати</button>
-                        </div>
-                    </div>
-                    <Divider />
-                    <div className="form-group">
-                        <label>Ліки які покриваються:</label>
-                        <div className='test'>
-                            <input className='input_create' id='drugsList' type="text" value={drugs} onChange={(e) => setDrugs(e.target.value)} />
-                            <button className='addOptionBtn'>Додати</button>
-                        </div>
-                    </div>
-                    <Divider />
+                    
+                    
+                    
                     <div className="form-group-big">
                         <label>Опис полісу:</label>
                         <textarea className='desc-input' type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
