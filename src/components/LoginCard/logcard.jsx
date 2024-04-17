@@ -75,7 +75,6 @@ export default function LogCard() {
                         <span>Або використайте вашу пошту для реєстрації</span>
                         <input className="auth-card-inputs" type="text" placeholder="Логін" value={userName} onChange={(e) => setUsername(e.target.value)} />
                         <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input className="auth-card-inputs" type="text" placeholder="Прізвище" />
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
 
                         <button className="auth-card-btn" onClick={regFunct}>далі</button>
