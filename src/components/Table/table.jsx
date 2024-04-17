@@ -113,7 +113,7 @@ const Table = () => {
                             className="grid-cell"
                             onClick={() => handleCellClick(company)}
                         >
-                            {highlightSearch(company.name)}
+                            <p>{highlightSearch(company.name)}</p>
                         </div>
                     </div>
                 ))}

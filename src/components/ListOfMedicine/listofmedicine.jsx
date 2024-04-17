@@ -67,7 +67,10 @@ export default function CreatePolicy() {
             <div className='med_list_con'>
                 {mList.map(item => {
                     return <div className='medicineListItem' key={item.code}>
-                        <p onClick={() => showSubCategories(item.code)}>{item.code} - {item.name}</p>
+                        <div className='med_item_con' onClick={() => showSubCategories(item.code)}>
+                            {item.code} - {item.name}
+                        </div>
+
                         <div className='med_sub_list_con'>
                             {!!item?.isSubShown && item.subcategories.map(subItem => {
                                 return <div className='medicineListSubItem' key={subItem.code} >
@@ -92,6 +95,6 @@ export default function CreatePolicy() {
                     </div>
                 })}
             </div>
-        </div>
+        </div >
     )
 }

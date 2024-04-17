@@ -22,7 +22,7 @@ export default function LogCard() {
         try {
 
             await authService.register({ username: userName, password: pass, email: email });
-           // window.location.href = '/create'
+            // window.location.href = '/create'
         } catch (error) {
             console.error('Error during registration:', error);
         }
@@ -43,12 +43,12 @@ export default function LogCard() {
                 console.log('Login failed: Incorrect username or password');
             }
         } catch (error) {
-            
+
         }
         finally {
             //window.location.href = "/create"
         }
-       
+
     }
 
     function LogEvent() {
@@ -62,7 +62,7 @@ export default function LogCard() {
         }
     }
 
-    
+
 
 
     return (
@@ -72,7 +72,7 @@ export default function LogCard() {
                     <form className="auth-form" action="#">
                         <h1>Створити акаунт</h1>
 
-                        <span>Або використайте вашу пошту для реєстрації</span>
+                        <span className="change-auth-method-txt">Або використайте вашу пошту для реєстрації</span>
                         <input className="auth-card-inputs" type="text" placeholder="Логін" value={userName} onChange={(e) => setUsername(e.target.value)} />
                         <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <input className="auth-card-inputs" type="text" placeholder="Прізвище" />
@@ -85,7 +85,7 @@ export default function LogCard() {
                     <div className="auth-form" action="#">
                         <h1>Вхід</h1>
 
-                        <span>Або використайте вашу пошту для входу</span>
+                        <span className="change-auth-method-txt">Або використайте вашу пошту для входу</span>
                         <input className="auth-card-inputs email-input" type="email" placeholder="Пошта" value={userName} onChange={(e) => setUsername(e.target.value)} />
                         <input className="auth-card-inputs pass-input" type="password" placeholder="Пароль" value={pass} onChange={(e) => setPassword(e.target.value)} />
                         <button className="auth-card-btn " onClick={logFunct}>далі</button>
