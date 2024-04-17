@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import authService from "../../service/login";
 import "./dist/logcard.css";
-import { useNavigate } from 'react-router-dom';
 
 
 export default function LogCard() {
@@ -16,7 +15,6 @@ export default function LogCard() {
         setIsRightPanelActive(!isRightPanelActive);
     }
 
-    const navigate = useNavigate();
 
     const regFunct = async () => {
         try {
@@ -32,8 +30,6 @@ export default function LogCard() {
 
 
     const logFunct = async () => {
-        // const username = "xx@gmail.com"
-        // const password = "pass12345"
         try {
             const response = await authService.login(userName, pass);
             if (response.success) {
@@ -46,7 +42,7 @@ export default function LogCard() {
             
         }
         finally {
-            //window.location.href = "/create"
+            window.location.href = "/create"
         }
        
     }
