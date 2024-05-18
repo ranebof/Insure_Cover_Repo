@@ -4,7 +4,7 @@ import Footer from "../components/MainFooter/footer"
 
 export default function NewCreate() {
     return (
-        <div className="NewCreateMain">
+        <div className="Main">
             <Header/>
             <NewCreatePolicyForm/>
             <Footer/>
