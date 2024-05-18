@@ -18,7 +18,7 @@ export default function CreatePolicy() {
 
     const createPol = async () => {
         try {
-            await createPolicyService.createPolicy({ number: policyNumber, name: policyName, description: description, company: company })
+            await createPolicyService.createPolicy(policyNumber,policyName,description,company)
         } catch (error) {
             console.error("Error during post of policy", error);
         }
@@ -87,9 +87,9 @@ export default function CreatePolicy() {
                         </button>
                     </div>
                     <div className={`post-btn-cont ${postButtonVisible ? 'visible' : ''}`}>
-                        <button className='post-policy-btn' onClick={createPol}>
+                        <div className='post-policy-btn' onClick={createPol}>
                             <p>опублікувати</p>
-                        </button>
+                        </div>
                     </div>
 
                 </form>
