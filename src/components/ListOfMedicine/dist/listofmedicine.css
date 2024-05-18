@@ -70,6 +70,7 @@
   row-gap: 15px;
   border-radius: 15px;
   padding: 10px;
+  font-size: 14px;
 }
 .med_list_con::-webkit-scrollbar {
   width: 0;
