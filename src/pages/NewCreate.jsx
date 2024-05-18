@@ -3,11 +3,11 @@ import Header from "../components/MainHeader/header";
 import Footer from "../components/MainFooter/footer";
 
 export default function NewCreate() {
-  return (
-    <div className="NewCreateMain">
-      <Header />
-      <NewCreatePolicyForm />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="Main">
+            <Header/>
+            <NewCreatePolicyForm/>
+            <Footer/>
+        </div>
+    )
 }
