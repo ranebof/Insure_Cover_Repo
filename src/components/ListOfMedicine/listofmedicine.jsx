@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "./dist/listofmedicine.css";
-import medicineList from "./medicine.json";
+import diseaseList from "./response.json";
 
 export default function CreatePolicy() {
   const [mList, setMlist] = useState([]);
+
   useEffect(() => {
-    setMlist([...medicineList.icd_dictionary]);
+    setMlist([...diseaseList.atc_dictionary]);
   }, []);
 
   function showSubCategories(code) {
@@ -29,16 +29,14 @@ export default function CreatePolicy() {
         if (item.code === itemCode) {
           return {
             ...item,
-            subcategories: item.subcategories.map((subItem) => {
+            subcategory: item.subcategory.map((subItem) => {
               if (subItem.code === subItemCode) {
                 return {
                   ...subItem,
                   isSubShown: !subItem.isSubShown,
                 };
               } else {
-                return {
-                  ...subItem,
-                };
+                return subItem;
               }
             }),
           };
@@ -49,24 +47,86 @@ export default function CreatePolicy() {
     );
   }
 
-  function showCodes(itemCode, subItemCode, codesCode) {
-    const itemIndex = mList.findIndex((item) => item.code === itemCode);
-    const subItemIndex = mList[itemIndex].subcategories.findIndex(
-      (item) => item.code === subItemCode
+  function showSubSubSubCategories(itemCode, subItemCode, subSubItemCode) {
+    setMlist(
+      mList.map((item) => {
+        if (item.code === itemCode) {
+          return {
+            ...item,
+            subcategory: item.subcategory.map((subItem) => {
+              if (subItem.code === subItemCode) {
+                return {
+                  ...subItem,
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => {
+                    if (subSubItem.code === subSubItemCode) {
+                      return {
+                        ...subSubItem,
+                        isSubShown: !subSubItem.isSubShown,
+                      };
+                    } else {
+                      return subSubItem;
+                    }
+                  }),
+                };
+              } else {
+                return subItem;
+              }
+            }),
+          };
+        } else {
+          return item;
+        }
+      })
     );
-    const subSubItemCodeIndex = mList[itemIndex].subcategories[
-      subItemIndex
-    ].subsubcategories.findIndex((item) => item.code === codesCode);
-    setMlist((prevState) => {
-      const prevStateCopy = JSON.parse(JSON.stringify([...prevState]));
-      prevStateCopy[itemIndex].subcategories[subItemIndex].subsubcategories[
-        subSubItemCodeIndex
-      ].codesShown =
-        !prevStateCopy[itemIndex].subcategories[subItemIndex].subsubcategories[
-          subSubItemCodeIndex
-        ].codesShown;
-      return [...prevStateCopy];
-    });
+  }
+
+  function showSubSubSubSubCategories(
+    itemCode,
+    subItemCode,
+    subSubItemCode,
+    subSubSubItemCode
+  ) {
+    setMlist(
+      mList.map((item) => {
+        if (item.code === itemCode) {
+          return {
+            ...item,
+            subcategory: item.subcategory.map((subItem) => {
+              if (subItem.code === subItemCode) {
+                return {
+                  ...subItem,
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => {
+                    if (subSubItem.code === subSubItemCode) {
+                      return {
+                        ...subSubItem,
+                        subsubsubcategory: subSubItem.subsubsubcategory.map(
+                          (subSubSubItem) => {
+                            if (subSubSubItem.code === subSubSubItemCode) {
+                              return {
+                                ...subSubSubItem,
+                                isSubShown: !subSubSubItem.isSubShown,
+                              };
+                            } else {
+                              return subSubSubItem;
+                            }
+                          }
+                        ),
+                      };
+                    } else {
+                      return subSubItem;
+                    }
+                  }),
+                };
+              } else {
+                return subItem;
+              }
+            }),
+          };
+        } else {
+          return item;
+        }
+      })
+    );
   }
 
   function handleMainCheckboxChange(code, checked) {
@@ -76,16 +136,25 @@ export default function CreatePolicy() {
           return {
             ...item,
             checked,
-            subcategories: item.subcategories.map((subItem) => ({
+            subcategory: item.subcategory.map((subItem) => ({
               ...subItem,
               checked,
-              subsubcategories: subItem.subsubcategories.map((subSubItem) => ({
+              subsubcategory: subItem.subsubcategory.map((subSubItem) => ({
                 ...subSubItem,
                 checked,
-                codes: subSubItem.codes.map((codeItem) => ({
-                  ...codeItem,
-                  checked,
-                })),
+                subsubsubcategory: subSubItem.subsubsubcategory.map(
+                  (subSubSubItem) => ({
+                    ...subSubSubItem,
+                    checked,
+                    subsubsubsubcategory:
+                      subSubSubItem.subsubsubsubcategory.map(
+                        (subSubSubSubItem) => ({
+                          ...subSubSubSubItem,
+                          checked,
+                        })
+                      ),
+                  })
+                ),
               })),
             })),
           };
@@ -102,21 +171,21 @@ export default function CreatePolicy() {
         if (item.code === itemCode) {
           return {
             ...item,
-            subcategories: item.subcategories.map((subItem) => {
+            subcategory: item.subcategory.map((subItem) => {
               if (subItem.code === subItemCode) {
                 return {
                   ...subItem,
                   checked,
-                  subsubcategories: subItem.subsubcategories.map(
-                    (subSubItem) => ({
-                      ...subSubItem,
-                      checked,
-                      codes: subSubItem.codes.map((codeItem) => ({
-                        ...codeItem,
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => ({
+                    ...subSubItem,
+                    checked,
+                    subsubsubcategory: subSubItem.subsubsubcategory.map(
+                      (subSubSubItem) => ({
+                        ...subSubSubItem,
                         checked,
-                      })),
-                    })
-                  ),
+                      })
+                    ),
+                  })),
                 };
               } else {
                 return subItem;
@@ -141,26 +210,76 @@ export default function CreatePolicy() {
         if (item.code === itemCode) {
           return {
             ...item,
-            subcategories: item.subcategories.map((subItem) => {
+            subcategory: item.subcategory.map((subItem) => {
               if (subItem.code === subItemCode) {
                 return {
                   ...subItem,
-                  subsubcategories: subItem.subsubcategories.map(
-                    (subSubItem) => {
-                      if (subSubItem.code === subSubItemCode) {
-                        return {
-                          ...subSubItem,
-                          checked,
-                          codes: subSubItem.codes.map((codeItem) => ({
-                            ...codeItem,
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => {
+                    if (subSubItem.code === subSubItemCode) {
+                      return {
+                        ...subSubItem,
+                        checked,
+                        subsubsubcategory: subSubItem.subsubsubcategory.map(
+                          (subSubSubItem) => ({
+                            ...subSubSubItem,
                             checked,
-                          })),
-                        };
-                      } else {
-                        return subSubItem;
-                      }
+                          })
+                        ),
+                      };
+                    } else {
+                      return subSubItem;
                     }
-                  ),
+                  }),
+                };
+              } else {
+                return subItem;
+              }
+            }),
+          };
+        } else {
+          return item;
+        }
+      })
+    );
+  }
+
+  function handleSubSubSubCheckboxChange(
+    itemCode,
+    subItemCode,
+    subSubItemCode,
+    subSubSubItemCode,
+    checked
+  ) {
+    setMlist(
+      mList.map((item) => {
+        if (item.code === itemCode) {
+          return {
+            ...item,
+            subcategory: item.subcategory.map((subItem) => {
+              if (subItem.code === subItemCode) {
+                return {
+                  ...subItem,
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => {
+                    if (subSubItem.code === subSubItemCode) {
+                      return {
+                        ...subSubItem,
+                        subsubsubcategory: subSubItem.subsubsubcategory.map(
+                          (subSubSubItem) => {
+                            if (subSubSubItem.code === subSubSubItemCode) {
+                              return {
+                                ...subSubSubItem,
+                                checked,
+                              };
+                            } else {
+                              return subSubSubItem;
+                            }
+                          }
+                        ),
+                      };
+                    } else {
+                      return subSubItem;
+                    }
+                  }),
                 };
               } else {
                 return subItem;
@@ -178,6 +297,7 @@ export default function CreatePolicy() {
     itemCode,
     subItemCode,
     subSubItemCode,
+    subSubSubItemCode,
     codeCode,
     checked
   ) {
@@ -186,31 +306,43 @@ export default function CreatePolicy() {
         if (item.code === itemCode) {
           return {
             ...item,
-            subcategories: item.subcategories.map((subItem) => {
+            subcategory: item.subcategory.map((subItem) => {
               if (subItem.code === subItemCode) {
                 return {
                   ...subItem,
-                  subsubcategories: subItem.subsubcategories.map(
-                    (subSubItem) => {
-                      if (subSubItem.code === subSubItemCode) {
-                        return {
-                          ...subSubItem,
-                          codes: subSubItem.codes.map((codeItem) => {
-                            if (codeItem.code === codeCode) {
+                  subsubcategory: subItem.subsubcategory.map((subSubItem) => {
+                    if (subSubItem.code === subSubItemCode) {
+                      return {
+                        ...subSubItem,
+                        subsubsubcategory: subSubItem.subsubsubcategory.map(
+                          (subSubSubItem) => {
+                            if (subSubSubItem.code === subSubSubItemCode) {
                               return {
-                                ...codeItem,
-                                checked,
+                                ...subSubSubItem,
+                                subsubsubsubcategory:
+                                  subSubSubItem.subsubsubsubcategory.map(
+                                    (codeItem) => {
+                                      if (codeItem.code === codeCode) {
+                                        return {
+                                          ...codeItem,
+                                          checked,
+                                        };
+                                      } else {
+                                        return codeItem;
+                                      }
+                                    }
+                                  ),
                               };
                             } else {
-                              return codeItem;
+                              return subSubSubItem;
                             }
-                          }),
-                        };
-                      } else {
-                        return subSubItem;
-                      }
+                          }
+                        ),
+                      };
+                    } else {
+                      return subSubItem;
                     }
-                  ),
+                  }),
                 };
               } else {
                 return subItem;
@@ -229,49 +361,71 @@ export default function CreatePolicy() {
       mList.map((item) => ({
         ...item,
         checked,
-        subcategories: item.subcategories.map((subItem) => ({
+        subcategory: item.subcategory.map((subItem) => ({
           ...subItem,
           checked,
-          subsubcategories: subItem.subsubcategories.map((subSubItem) => ({
+          subsubcategory: subItem.subsubcategory.map((subSubItem) => ({
             ...subSubItem,
             checked,
-            codes: subSubItem.codes.map((codeItem) => ({
-              ...codeItem,
-              checked,
-            })),
+            subsubsubcategory: subSubItem.subsubsubcategory.map(
+              (subSubSubItem) => ({
+                ...subSubSubItem,
+                checked,
+                subsubsubsubcategory: subSubSubItem.subsubsubsubcategory.map(
+                  (codeItem) => ({
+                    ...codeItem,
+                    checked,
+                  })
+                ),
+              })
+            ),
           })),
         })),
       }))
     );
   }
 
+  function handelBtnClick() {
+    window.location.href = "/medicine";
+  }
+
   return (
     <div className="list_of_medicine_con">
       <div className="list_title">
         <span>Створення полісу</span>
-        <span>Хвороби</span>
+        <span>Ліки</span>
       </div>
 
       <div className="select_all_holder">
-        <input
-          type="checkbox"
-          onChange={(e) => handleSelectAllChange(e.target.checked)}
-        />
-        Виділити все
+        <label
+          className={`custom-checkbox ${
+            mList.every((item) => item.checked) ? "checked" : ""
+          }`}
+        >
+          <input
+            type="checkbox"
+            onChange={(e) => handleSelectAllChange(e.target.checked)}
+          />
+        </label>
+        <span> Виділити все</span>
       </div>
       <div className="med_list_con">
         {mList.map((item) => {
           return (
             <div className="medicineListItem" key={item.code}>
               <div className="medicine_item_holder">
-                <input
-                  className="med_item_checkbox"
-                  type="checkbox"
-                  checked={item.checked || false}
-                  onChange={(e) =>
-                    handleMainCheckboxChange(item.code, e.target.checked)
-                  }
-                ></input>
+                <label
+                  className={`custom-checkbox ${item.checked ? "checked" : ""}`}
+                >
+                  <input
+                    className="med_item_checkbox"
+                    type="checkbox"
+                    checked={item.checked || false}
+                    onChange={(e) =>
+                      handleMainCheckboxChange(item.code, e.target.checked)
+                    }
+                  />
+                </label>
 
                 <div
                   className="med_item_con"
@@ -282,21 +436,27 @@ export default function CreatePolicy() {
               </div>
               <div className="med_sub_list_con">
                 {!!item?.isSubShown &&
-                  item.subcategories.map((subItem) => {
+                  item.subcategory.map((subItem) => {
                     return (
                       <div className="medicineListSubItem" key={subItem.code}>
                         <div className="medicine_item_holder">
-                          <input
-                            type="checkbox"
-                            checked={subItem.checked || false}
-                            onChange={(e) =>
-                              handleSubCheckboxChange(
-                                item.code,
-                                subItem.code,
-                                e.target.checked
-                              )
-                            }
-                          ></input>
+                          <label
+                            className={`custom-checkbox ${
+                              subItem.checked ? "checked" : ""
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={subItem.checked || false}
+                              onChange={(e) =>
+                                handleSubCheckboxChange(
+                                  item.code,
+                                  subItem.code,
+                                  e.target.checked
+                                )
+                              }
+                            />
+                          </label>
 
                           <div
                             className="med_item_con"
@@ -309,29 +469,35 @@ export default function CreatePolicy() {
                         </div>
                         <div className="med_sub_list_con">
                           {!!subItem?.isSubShown &&
-                            subItem.subsubcategories.map((subSubItem) => {
+                            subItem.subsubcategory.map((subSubItem) => {
                               return (
                                 <div
                                   className="medicineListItem"
                                   key={subSubItem.code}
                                 >
                                   <div className="medicine_item_holder">
-                                    <input
-                                      type="checkbox"
-                                      checked={subSubItem.checked || false}
-                                      onChange={(e) =>
-                                        handleSubSubCheckboxChange(
-                                          item.code,
-                                          subItem.code,
-                                          subSubItem.code,
-                                          e.target.checked
-                                        )
-                                      }
-                                    ></input>
+                                    <label
+                                      className={`custom-checkbox ${
+                                        subSubItem.checked ? "checked" : ""
+                                      }`}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        checked={subSubItem.checked || false}
+                                        onChange={(e) =>
+                                          handleSubSubCheckboxChange(
+                                            item.code,
+                                            subItem.code,
+                                            subSubItem.code,
+                                            e.target.checked
+                                          )
+                                        }
+                                      />
+                                    </label>
 
                                     <p
                                       onClick={() =>
-                                        showCodes(
+                                        showSubSubSubCategories(
                                           item.code,
                                           subItem.code,
                                           subSubItem.code
@@ -343,38 +509,106 @@ export default function CreatePolicy() {
                                   </div>
 
                                   <div className="med_sub_list_con">
-                                    {!!subSubItem.codesShown &&
-                                      subSubItem.codes.map((codeItem) => {
-                                        return (
-                                          <div
-                                            className="medicineListSubItem"
-                                            key={codeItem.code}
-                                          >
-                                            <div className="medicine_item_holder">
-                                              <input
-                                                type="checkbox"
-                                                checked={
-                                                  codeItem.checked || false
-                                                }
-                                                onChange={(e) =>
-                                                  handleCodeCheckboxChange(
-                                                    item.code,
-                                                    subItem.code,
-                                                    subSubItem.code,
-                                                    codeItem.code,
-                                                    e.target.checked
-                                                  )
-                                                }
-                                              ></input>
+                                    {!!subSubItem?.isSubShown &&
+                                      subSubItem.subsubsubcategory.map(
+                                        (subSubSubItem) => {
+                                          return (
+                                            <div
+                                              className="medicineListSubItem"
+                                              key={subSubSubItem.code}
+                                            >
+                                              <div className="medicine_item_holder">
+                                                <label
+                                                  className={`custom-checkbox ${
+                                                    subSubSubItem.checked
+                                                      ? "checked"
+                                                      : ""
+                                                  }`}
+                                                >
+                                                  <input
+                                                    type="checkbox"
+                                                    checked={
+                                                      subSubSubItem.checked ||
+                                                      false
+                                                    }
+                                                    onChange={(e) =>
+                                                      handleSubSubSubCheckboxChange(
+                                                        item.code,
+                                                        subItem.code,
+                                                        subSubItem.code,
+                                                        subSubSubItem.code,
+                                                        e.target.checked
+                                                      )
+                                                    }
+                                                  />
+                                                </label>
 
-                                              <p>
-                                                {codeItem.code} -{" "}
-                                                {codeItem.name}
-                                              </p>
+                                                <p
+                                                  onClick={() =>
+                                                    showSubSubSubSubCategories(
+                                                      item.code,
+                                                      subItem.code,
+                                                      subSubItem.code,
+                                                      subSubSubItem.code
+                                                    )
+                                                  }
+                                                >
+                                                  {subSubSubItem.code} -{" "}
+                                                  {subSubSubItem.name}
+                                                </p>
+                                              </div>
+
+                                              <div className="med_sub_list_con">
+                                                {!!subSubSubItem?.isSubShown &&
+                                                  subSubSubItem.subsubsubsubcategory.map(
+                                                    (codeItem) => {
+                                                      return (
+                                                        <div
+                                                          className="medicineListItem"
+                                                          key={codeItem.code}
+                                                        >
+                                                          <div className="medicine_item_holder">
+                                                            <label
+                                                              className={`custom-checkbox ${
+                                                                codeItem.checked
+                                                                  ? "checked"
+                                                                  : ""
+                                                              }`}
+                                                            >
+                                                              <input
+                                                                type="checkbox"
+                                                                checked={
+                                                                  codeItem.checked ||
+                                                                  false
+                                                                }
+                                                                onChange={(e) =>
+                                                                  handleCodeCheckboxChange(
+                                                                    item.code,
+                                                                    subItem.code,
+                                                                    subSubItem.code,
+                                                                    subSubSubItem.code,
+                                                                    codeItem.code,
+                                                                    e.target
+                                                                      .checked
+                                                                  )
+                                                                }
+                                                              />
+                                                            </label>
+
+                                                            <p>
+                                                              {codeItem.code} -{" "}
+                                                              {codeItem.name}
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      );
+                                                    }
+                                                  )}
+                                              </div>
                                             </div>
-                                          </div>
-                                        );
-                                      })}
+                                          );
+                                        }
+                                      )}
                                   </div>
                                 </div>
                               );
@@ -389,7 +623,7 @@ export default function CreatePolicy() {
         })}
       </div>
       <div className="list_button_holder">
-        <button>Далі</button>
+        <button onClick={handelBtnClick}>Далі</button>
       </div>
     </div>
   );
