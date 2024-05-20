@@ -386,7 +386,7 @@ export default function CreatePolicy() {
   }
 
   function handelBtnClick() {
-    window.location.href = "/medicine";
+    window.location.href = "/lastpolicy";
   }
 
   return (

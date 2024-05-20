@@ -59,7 +59,7 @@ label {
   padding: 0.5vw;
   border-radius: 0.8vw;
   border: none;
-  height: 40vh;
+  height: 25vh;
   resize: none;
 }
 #fileInput {
@@ -74,12 +74,6 @@ button[type='submit'] {
 }
 button[type='submit']:hover {
   background-color: #0056b3;
-}
-.divider {
-  height: 0.2vh;
-  background-color: #bfbfbf;
-  margin-bottom: 3vh;
-  margin-top: 1vh;
 }
 .submit-policy-btn {
   padding: 0;
@@ -135,7 +129,7 @@ button[type='submit']:hover {
   align-items: center;
   background-color: #fff;
   justify-content: center;
-  margin: 0vw 0vw 3vw 47vw;
+  margin: 0vw 0vw 0vw 47vw;
 }
 .pdf-cont {
   display: flex;
@@ -143,8 +137,8 @@ button[type='submit']:hover {
   align-items: center;
   background-color: #fff;
   border-radius: 0.8vw;
-  height: 25vh;
-  margin-bottom: 4vh;
+  height: 15vh;
+  margin-bottom: 2vh;
 }
 .file-upload-container {
   position: relative;
@@ -160,96 +154,10 @@ button[type='submit']:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("/public/images/uploadPdf.png");
+  background-size: 5vw;
 }
 .uploaded {
   background-image: url("/public/images/check-mark.png");
-}
-.test {
-  display: flex;
-  width: 52vw;
-  flex-direction: row;
-  background-color: #fff;
-  border-radius: 0.5vw;
-  align-items: center;
-}
-#diseaseList {
-  width: 100%;
-  margin-left: 0;
-}
-#drugsList {
-  width: 100%;
-  margin-left: 0;
-}
-.addOptionBtn {
-  width: 4vw;
-  height: 2.8vh;
-  margin-right: 0.5vw;
-  font-size: 0.8vw;
-  color: #39ab59;
-  border: 1px solid #39ab59;
-  border-radius: 0.3vw;
-  background-color: transparent;
-  cursor: pointer;
-}
-.post-policy-btn {
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  --primary-color: #39ab59;
-  --hovered-color: #39ab59;
-  position: relative;
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  font-size: 0.7vw;
-}
-.post-policy-btn p {
-  margin: 0;
-  position: relative;
-  font-size: 0.7vw;
-  color: var(--primary-color);
-  text-transform: uppercase;
-}
-.post-policy-btn::after {
-  position: absolute;
-  content: "";
-  width: 0;
-  left: 0;
-  bottom: -0.8vh;
-  background: var(--hovered-color);
-  height: 2px;
-  transition: 0.3s ease-out;
-}
-.post-policy-btn p::before {
-  position: absolute;
-  content: "ОПУБЛІКУВАТИ";
-  width: 0%;
-  inset: 0;
-  color: var(--hovered-color);
-  overflow: hidden;
-  transition: 0.3s ease-out;
-}
-.post-policy-btn:hover::after {
-  width: 100%;
-}
-.post-policy-btn:hover p::before {
-  width: 100%;
-}
-.post-btn-cont {
-  border-radius: 0.5vw;
-  height: 6vh;
-  width: 0;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  justify-content: center;
-  margin: -6vw 0vw 3vw 33vw;
-  transition: width 0.5s ease;
-}
-.post-btn-cont.visible {
-  width: 13vw;
 }
 .last_list_title {
   display: flex;
