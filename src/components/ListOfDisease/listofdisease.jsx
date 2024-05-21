@@ -1,13 +1,62 @@
 import { useEffect, useState } from "react";
 import "./dist/listofdisease.css";
-import diseaseList from "./disease.json";
 
 export default function CreatePolicy() {
   const [mList, setMlist] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setMlist([...diseaseList.icd_dictionary]);
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://138.68.127.156:8000/api/db/icd10classification/",
+          { signal }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setMlist([...data.icd_dictionary]);
+      } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.error("Error fetching data:", error);
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 10000); // 10 seconds timeout
+
+    return () => clearTimeout(timeoutId);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="list_of_medicine_con">
+        {" "}
+        <div class="loader">
+          <label className="loader_label">Будь ласка зачекайте...</label>
+          <div class="loading"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
 
   function showSubCategories(code) {
     setMlist(

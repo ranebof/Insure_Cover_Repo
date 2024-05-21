@@ -371,9 +371,9 @@ export default function CreatePolicy() {
               (subSubSubItem) => ({
                 ...subSubSubItem,
                 checked,
-                subsubsubsubcategory: subSubSubItem.subsubsubsubcategory.map(
-                  (codeItem) => ({
-                    ...codeItem,
+                subsubsubsubcategory: subSubItem.subsubsubsubcategory.map(
+                  (subSubSubSubItem) => ({
+                    ...subSubSubSubItem,
                     checked,
                   })
                 ),
