@@ -3,6 +3,7 @@ import diseaseList from "./response.json";
 
 export default function CreatePolicy() {
   const [mList, setMlist] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     setMlist([...diseaseList.atc_dictionary]);
@@ -389,6 +390,34 @@ export default function CreatePolicy() {
     window.location.href = "/lastpolicy";
   }
 
+  function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+  }
+
+  function filterList(list, query) {
+    return list
+      .map((item) => {
+        if (!item) return null;
+
+        if (item.name.toLowerCase().includes(query.toLowerCase())) {
+          return item;
+        }
+
+        const filteredSubcategory = filterList(item.subcategory || [], query);
+        if (filteredSubcategory.length > 0) {
+          return {
+            ...item,
+            subcategory: filteredSubcategory,
+            isSubShown: true,
+          };
+        }
+
+        return null;
+      })
+      .filter((item) => item !== null);
+  }
+  const filteredList = filterList(mList, searchQuery);
+
   return (
     <div className="list_of_medicine_con">
       <div className="list_title">
@@ -396,10 +425,19 @@ export default function CreatePolicy() {
         <span>Ліки</span>
       </div>
 
+      <div className="search_holder">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
+
       <div className="select_all_holder">
         <label
           className={`custom-checkbox ${
-            mList.every((item) => item.checked) ? "checked" : ""
+            filteredList.every((item) => item.checked) ? "checked" : ""
           }`}
         >
           <input
@@ -410,7 +448,7 @@ export default function CreatePolicy() {
         <span> Виділити все</span>
       </div>
       <div className="med_list_con">
-        {mList.map((item) => {
+        {filteredList.map((item) => {
           return (
             <div className="medicineListItem" key={item.code}>
               <div className="medicine_item_holder">
