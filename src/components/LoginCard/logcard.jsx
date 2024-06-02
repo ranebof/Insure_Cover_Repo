@@ -34,7 +34,6 @@ export default function LogCard() {
         password: pass,
         email: email,
       });
-      // window.location.href = '/create'
     } catch (error) {
       console.error("Error during registration:", error);
     }
