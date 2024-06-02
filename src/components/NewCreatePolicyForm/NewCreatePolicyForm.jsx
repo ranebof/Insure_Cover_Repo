@@ -8,7 +8,7 @@ export default function NewCreatePolicyForm() {
 
   return (
     <div className="container">
-      <h1>Створити Поліс</h1>
+      <h1>Створення Полісу</h1>
 
       <input type="text" className="input-field" placeholder="Номер Полісу" />
       <input type="text" className="input-field" placeholder="Назва Полісу" />

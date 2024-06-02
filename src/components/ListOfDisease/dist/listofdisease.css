@@ -237,3 +237,6 @@
     left: -25%;
   }
 }
+.list_button_holder button:hover {
+  background-color: #249e57;
+}
