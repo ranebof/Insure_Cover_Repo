@@ -5,6 +5,7 @@ export default function CreatePolicy() {
   const [mList, setMlist] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -45,10 +46,9 @@ export default function CreatePolicy() {
   if (loading) {
     return (
       <div className="list_of_medicine_con">
-        {" "}
-        <div class="loader">
+        <div className="loader">
           <label className="loader_label">Будь ласка зачекайте...</label>
-          <div class="loading"></div>
+          <div className="loading"></div>
         </div>
       </div>
     );
@@ -297,12 +297,54 @@ export default function CreatePolicy() {
     window.location.href = "/medicine";
   }
 
+  const filterList = (list, query) => {
+    return list.reduce((acc, item) => {
+      const hasSubcategories = item.subcategories && item.subcategories.length;
+      const hasSubsubcategories =
+        item.subsubcategories && item.subsubcategories.length;
+      const hasCodes = item.codes && item.codes.length;
+
+      if (
+        item.name.toLowerCase().includes(query) ||
+        item.code.toLowerCase().includes(query) ||
+        (hasSubcategories &&
+          filterList(item.subcategories, query).length > 0) ||
+        (hasSubsubcategories &&
+          filterList(item.subsubcategories, query).length > 0) ||
+        (hasCodes && filterList(item.codes, query).length > 0)
+      ) {
+        acc.push({
+          ...item,
+          subcategories: hasSubcategories
+            ? filterList(item.subcategories, query)
+            : [],
+          subsubcategories: hasSubsubcategories
+            ? filterList(item.subsubcategories, query)
+            : [],
+          codes: hasCodes ? filterList(item.codes, query) : [],
+        });
+      }
+
+      return acc;
+    }, []);
+  };
+
+  const filteredList = filterList(mList, searchQuery.toLowerCase());
+
   return (
     <div className="list_of_medicine_con">
       <div className="list_title">
         <span>Створення полісу</span>
         <span>Хвороби</span>
       </div>
+
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search_input"
+      />
 
       <div className="select_all_holder">
         <label
@@ -318,157 +360,139 @@ export default function CreatePolicy() {
         <span> Виділити все</span>
       </div>
       <div className="med_list_con">
-        {mList.map((item) => {
-          return (
-            <div className="medicineListItem" key={item.code}>
-              <div className="medicine_item_holder">
-                <label
-                  className={`custom-checkbox ${item.checked ? "checked" : ""}`}
-                >
-                  <input
-                    className="med_item_checkbox"
-                    type="checkbox"
-                    checked={item.checked || false}
-                    onChange={(e) =>
-                      handleMainCheckboxChange(item.code, e.target.checked)
-                    }
-                  />
-                </label>
-
-                <div
-                  className="med_item_con"
-                  onClick={() => showSubCategories(item.code)}
-                >
-                  {item.code} - {item.name}
-                </div>
-              </div>
-              <div className="med_sub_list_con">
-                {!!item?.isSubShown &&
-                  item.subcategories.map((subItem) => {
-                    return (
-                      <div className="medicineListSubItem" key={subItem.code}>
-                        <div className="medicine_item_holder">
-                          <label
-                            className={`custom-checkbox ${
-                              subItem.checked ? "checked" : ""
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={subItem.checked || false}
-                              onChange={(e) =>
-                                handleSubCheckboxChange(
-                                  item.code,
-                                  subItem.code,
-                                  e.target.checked
-                                )
-                              }
-                            />
-                          </label>
-
-                          <div
-                            className="med_item_con"
-                            onClick={() =>
-                              showSubSubCategories(item.code, subItem.code)
-                            }
-                          >
-                            {subItem.code} - {subItem.name}
-                          </div>
-                        </div>
-                        <div className="med_sub_list_con">
-                          {!!subItem?.isSubShown &&
-                            subItem.subsubcategories.map((subSubItem) => {
-                              return (
-                                <div
-                                  className="medicineListItem"
-                                  key={subSubItem.code}
-                                >
-                                  <div className="medicine_item_holder">
-                                    <label
-                                      className={`custom-checkbox ${
-                                        subSubItem.checked ? "checked" : ""
-                                      }`}
-                                    >
-                                      <input
-                                        type="checkbox"
-                                        checked={subSubItem.checked || false}
-                                        onChange={(e) =>
-                                          handleSubSubCheckboxChange(
-                                            item.code,
-                                            subItem.code,
-                                            subSubItem.code,
-                                            e.target.checked
-                                          )
-                                        }
-                                      />
-                                    </label>
-
-                                    <p
-                                      onClick={() =>
-                                        showCodes(
-                                          item.code,
-                                          subItem.code,
-                                          subSubItem.code
-                                        )
-                                      }
-                                    >
-                                      {subSubItem.code} - {subSubItem.name}
-                                    </p>
-                                  </div>
-
-                                  <div className="med_sub_list_con">
-                                    {!!subSubItem.codesShown &&
-                                      subSubItem.codes.map((codeItem) => {
-                                        return (
-                                          <div
-                                            className="medicineListSubItem"
-                                            key={codeItem.code}
-                                          >
-                                            <div className="medicine_item_holder">
-                                              <label
-                                                className={`custom-checkbox ${
-                                                  codeItem.checked
-                                                    ? "checked"
-                                                    : ""
-                                                }`}
-                                              >
-                                                <input
-                                                  type="checkbox"
-                                                  checked={
-                                                    codeItem.checked || false
-                                                  }
-                                                  onChange={(e) =>
-                                                    handleCodeCheckboxChange(
-                                                      item.code,
-                                                      subItem.code,
-                                                      subSubItem.code,
-                                                      codeItem.code,
-                                                      e.target.checked
-                                                    )
-                                                  }
-                                                />
-                                              </label>
-
-                                              <p>
-                                                {codeItem.code} -{" "}
-                                                {codeItem.name}
-                                              </p>
-                                            </div>
-                                          </div>
-                                        );
-                                      })}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                      </div>
-                    );
-                  })}
+        {filteredList.map((item) => (
+          <div className="medicineListItem" key={item.code}>
+            <div className="medicine_item_holder">
+              <label
+                className={`custom-checkbox ${item.checked ? "checked" : ""}`}
+              >
+                <input
+                  className="med_item_checkbox"
+                  type="checkbox"
+                  checked={item.checked || false}
+                  onChange={(e) =>
+                    handleMainCheckboxChange(item.code, e.target.checked)
+                  }
+                />
+              </label>
+              <div
+                className="med_item_con"
+                onClick={() => showSubCategories(item.code)}
+              >
+                {item.code} - {item.name}
               </div>
             </div>
-          );
-        })}
+            <div className="med_sub_list_con">
+              {!!item?.isSubShown &&
+                item.subcategories.map((subItem) => (
+                  <div className="medicineListSubItem" key={subItem.code}>
+                    <div className="medicine_item_holder">
+                      <label
+                        className={`custom-checkbox ${
+                          subItem.checked ? "checked" : ""
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={subItem.checked || false}
+                          onChange={(e) =>
+                            handleSubCheckboxChange(
+                              item.code,
+                              subItem.code,
+                              e.target.checked
+                            )
+                          }
+                        />
+                      </label>
+                      <div
+                        className="med_item_con"
+                        onClick={() =>
+                          showSubSubCategories(item.code, subItem.code)
+                        }
+                      >
+                        {subItem.code} - {subItem.name}
+                      </div>
+                    </div>
+                    <div className="med_sub_list_con">
+                      {!!subItem?.isSubShown &&
+                        subItem.subsubcategories.map((subSubItem) => (
+                          <div
+                            className="medicineListItem"
+                            key={subSubItem.code}
+                          >
+                            <div className="medicine_item_holder">
+                              <label
+                                className={`custom-checkbox ${
+                                  subSubItem.checked ? "checked" : ""
+                                }`}
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={subSubItem.checked || false}
+                                  onChange={(e) =>
+                                    handleSubSubCheckboxChange(
+                                      item.code,
+                                      subItem.code,
+                                      subSubItem.code,
+                                      e.target.checked
+                                    )
+                                  }
+                                />
+                              </label>
+                              <p
+                                onClick={() =>
+                                  showCodes(
+                                    item.code,
+                                    subItem.code,
+                                    subSubItem.code
+                                  )
+                                }
+                              >
+                                {subSubItem.code} - {subSubItem.name}
+                              </p>
+                            </div>
+                            <div className="med_sub_list_con">
+                              {!!subSubItem.codesShown &&
+                                subSubItem.codes.map((codeItem) => (
+                                  <div
+                                    className="medicineListSubItem"
+                                    key={codeItem.code}
+                                  >
+                                    <div className="medicine_item_holder">
+                                      <label
+                                        className={`custom-checkbox ${
+                                          codeItem.checked ? "checked" : ""
+                                        }`}
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          checked={codeItem.checked || false}
+                                          onChange={(e) =>
+                                            handleCodeCheckboxChange(
+                                              item.code,
+                                              subItem.code,
+                                              subSubItem.code,
+                                              codeItem.code,
+                                              e.target.checked
+                                            )
+                                          }
+                                        />
+                                      </label>
+                                      <p>
+                                        {codeItem.code} - {codeItem.name}
+                                      </p>
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="list_button_holder">
         <button onClick={handelBtnClick}>Далі</button>

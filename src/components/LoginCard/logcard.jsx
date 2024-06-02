@@ -53,7 +53,7 @@ export default function LogCard() {
     } catch (error) {
       console.error("Error during login:", error);
     } finally {
-      //window.location.href = "/newpolicy";
+      window.location.href = "/newpolicy";
     }
   };
 
