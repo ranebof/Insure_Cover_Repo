@@ -54,7 +54,7 @@ export default function LogCard() {
     } catch (error) {
       console.error("Error during login:", error);
     } finally {
-      window.location.href = "/newpolicy";
+      //window.location.href = "/newpolicy";
     }
   };
 
@@ -72,10 +72,7 @@ export default function LogCard() {
     <div className="main_container">
       <div
         className={`auth-container ${
-          isRightPanelActive ? "right-panel-active" : ""
-        }`}
-        id="auth-container"
-      >
+          isRightPanelActive ? "right-panel-active" : ""}`} id="auth-container">
         <div className="auth-form-container sign-up-container">
           <form className="auth-form" action="#">
             <h1>Створити акаунт</h1>
