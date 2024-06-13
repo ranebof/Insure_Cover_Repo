@@ -337,13 +337,11 @@ export default function CreatePolicy() {
         <span>Створення полісу</span>
         <span>Хвороби</span>
       </div>
-
       <input
+        className="search-bar"
         type="text"
-        placeholder="Search..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="search_input"
       />
 
       <div className="select_all_holder">

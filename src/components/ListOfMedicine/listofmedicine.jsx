@@ -427,8 +427,8 @@ export default function CreatePolicy() {
 
       <div className="search_holder">
         <input
+          className="search-bar"
           type="text"
-          placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
