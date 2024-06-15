@@ -3,23 +3,46 @@ import "./dist/header.css";
 
 export default function header() {
   return (
-    <div className="HeaderMain">
-      <div className="logo_container">
-        <img id="Logo" src="./images/Logo.png" alt="logo"></img>
-        <span className="logo_text">InsureCover</span>
-      </div>
-      {/* <div className='cont_search_and_create'>
-                    <div className='search_policy'>Пошук Полісу</div>
-                    <div className='create_policy'>Створення Полісу</div>
-                </div> */}
+    // <div className="HeaderMain">
+    //   <div className="logo_container">
+    //     <img id="Logo" src="./images/Logo.png" alt="logo"></img>
+    //     <span className="logo_text">InsureCover</span>
+    //   </div>
 
-      <div className="right_container">
-        <div className="login_text_r">Вхід</div>
-        <div className="block_r">
-          <p className="register_text_r">Реєстрація</p>
-        </div>
-        <div className="circle_r"></div>
-      </div>
+    //   <div class="search_and_create">
+    //     <div class="search_text_button">Пошук полісу</div>
+    //     <div class="create_text_button">Створення полісу</div>
+    //     <div class="saved_text_button">Збережені поліси</div>
+    //   </div>
+
+
+    //   <div className="right_container">
+    //     <div className="login_text_r">Вхід</div>
+    //     <div className="block_r">
+    //       <p className="register_text_r">Реєстрація</p>
+    //     </div>
+    //     <div className="circle_r"></div>
+    //   </div>
+    // </div>
+
+    <div className="HeaderMain">
+      <div class="navbar">
+    <div class="logo">
+        <img id="Logo" src="./images/Logo.png" alt="logo"></img>
+        <span>InsureCover</span>
+    </div>
+    <div class="nav-links">
+        <div class="search_text_button">Пошук полісу</div>
+        <div class="create_text_button">Створення полісу</div>
+        <div class="saved_text_button">Збережені поліси</div>
+    </div>
+    <div class="user-options">
+        <button>Вхід</button>
+        <button>Реєстрація</button>
+        <div class="circle"></div>
+    </div>
+</div>
+
     </div>
   );
 }
