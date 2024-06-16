@@ -5,7 +5,7 @@ import ListOfMedicine from "./pages/ListofmedicinePage";
 import NewCreate from "./pages/NewCreate";
 import LastCreate from "./pages/CreatePolicyLastPage";
 import ListOfDisease from "./pages/ListofDiseasepage";
-
+import SavedPolicyPage from "./pages/SavedPolicyPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -20,6 +20,8 @@ export default function App() {
 
           <Route path="/newpolicy" element={<NewCreate />} />
           <Route path="/lastpolicy" element={<LastCreate />} />
+
+          <Route path="/saved" element={<SavedPolicyPage />} />
         </Routes>
       </BrowserRouter>
     </div>
