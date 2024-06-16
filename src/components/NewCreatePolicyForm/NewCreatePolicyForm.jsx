@@ -4,12 +4,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function NewCreatePolicyForm() {
-  const [policyNumber, setPolicyNumber] = useState("");
+  const [policyCode, setPolicyCode] = useState("");
   const [policyName, setPolicyName] = useState("");
   const [company, setCompany] = useState("");
-
+  const [diseases, setDiseases] = useState([]);
+  const [medicines, setMedicines] = useState([]);
+  const [description, setDescriptions] = useState("");
   const handleBtnClick = () => {
-    if (!policyNumber.trim() || !policyName.trim() || !company.trim()) {
+    if (!policyCode.trim() || !policyName.trim() || !company.trim()) {
       toast.error("Будь ласка, заповніть всі поля");
       return;
     }
@@ -27,8 +29,8 @@ export default function NewCreatePolicyForm() {
         type="text"
         className="input-field"
         placeholder="Номер Полісу"
-        value={policyNumber}
-        onChange={(e) => setPolicyNumber(e.target.value)}
+        value={policyCode}
+        onChange={(e) => setPolicyCode(e.target.value)}
       />
 
       <input
