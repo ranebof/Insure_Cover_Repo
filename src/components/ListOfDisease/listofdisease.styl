@@ -239,3 +239,246 @@
 .list_button_holder button:hover {
   background-color: #249e57;
 }
+
+.create-form-cont {
+  width: 80vw;
+  height: 70vh;
+  margin: auto;
+  padding: 1.3vh;
+  border-radius: 1.3vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e4e4e4;
+  box-shadow: 1vw 2vh 2vw 0.5vw rgba(0, 0, 0, 0.15);
+  justify-content: center;
+  align-items: center;
+  overflow: auto
+}
+.create-form-cont::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.form-container {
+  width: 60vw;
+  height: 69vh;
+  padding: 8vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+
+.last-form-group-big{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5vh;
+}
+
+label {
+  color: #3aac7f;
+  width: 15vw
+  font-weight:800;
+  font-size:1vw
+  padding-bottom: 1vh;
+}
+
+
+.input_create {
+  width: 80vw;
+  padding: 0.5vw;
+  margin-left:5vw;
+  border-radius: 0.5vw;
+  border: none;
+  font-size:1vw
+  font-weight:500
+}
+.input_create:focus {
+    outline: none
+}
+
+#fileInput{
+  display:none
+
+}
+
+
+button[type='submit'] {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button[type='submit']:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+.submit-policy-btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border:none;
+  cursor: pointer;
+  --primary-color: #39AB59;
+  --hovered-color: #39AB59;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  font-size: 0.7vw;
+
+
+}
+
+.submit-policy-btn p {
+  margin: 0;
+  position: relative;
+  font-size: 0.7vw;
+  color: var(--primary-color);
+  text-transform:uppercase
+
+}
+
+.submit-policy-btn::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -0.8vh;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+.submit-policy-btn p::before {
+  position: absolute;
+  content: "ЗБЕРЕГТИ";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+.submit-policy-btn:hover::after {
+  width: 100%;
+}
+
+.submit-policy-btn:hover p::before {
+  width: 100%;
+}
+
+.submit-btn-cont {
+    border-radius: 0.5vw;
+    height: 6vh;
+    width: 13vw;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+    margin: 0vw 0vw 0vw 47vw;
+}
+
+
+.pdf-cont{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: #fff;
+    border-radius: 0.8vw;
+    height: 15vh;
+    margin-bottom:2vh;
+  }
+
+.file-upload-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+.upload-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/public/images/uploadPdf.png'); 
+  background-size:5vw;
+}
+
+.uploaded {
+  background-image: url('/public/images/check-mark.png');
+}
+
+
+
+.last_list_title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.last_list_title span:nth-child(1) {
+  font-size: 35px;
+  font-weight: bold;
+
+  color: #3aac7f;
+}
+
+.last_list_title span:nth-child(2) {
+  font-size: 20px;
+  font-weight: 500;
+  color: #2c8260;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+.popup-inner span{
+  font-size: 40px;
+  font-weight: 600;
+  
+  }
+
+.close-popup-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #3aac7f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

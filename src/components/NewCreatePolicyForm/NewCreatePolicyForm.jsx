@@ -18,7 +18,12 @@ export default function NewCreatePolicyForm() {
   };
 
   const handleBtnClick = () => {
-    if (!policyCode.trim() || !policyName.trim() || !company.trim()) {
+    if (
+      !policyCode.trim() ||
+      !policyName.trim() ||
+      !company.trim() ||
+      !description.trim()
+    ) {
       toast.error("Будь ласка, заповніть всі поля");
       return;
     }
@@ -55,16 +60,14 @@ export default function NewCreatePolicyForm() {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
       />
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="last-form-group-big">
-          <textarea
-            className="desc-input"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-      </form>
+
+      <textarea
+        className="desc-input"
+        type="text"
+        placeholder="Опис"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
       <button className="button" onClick={handleBtnClick}>
         ДАЛІ
       </button>
