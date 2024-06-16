@@ -2,14 +2,12 @@
 // const name = document.getElementById('name').value;
 // const company = document.getElementById('company').value;
 // const description = document.getElementById('description').value;
-
 // const data = {
 //     number: number,
 //     name: name,
 //     company: company,
 //     description: description
 // };
-
 // const savePolicy = (data) => {
 //     axios.post('https://your-server-endpoint/api/save', data)
 //     .then(response => {
@@ -23,5 +21,4 @@
 //         alert('There was an error saving the data.');
 //     });
 // }
-
-
+"use strict";

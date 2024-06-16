@@ -8,6 +8,17 @@ export default function NewCreatePolicyForm() {
   const [policyName, setPolicyName] = useState("");
   const [company, setCompany] = useState("");
 
+  const [description, setDescription] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowPopup(true);
+  };
+
+
+
   const handleBtnClick = () => {
     if (!policyNumber.trim() || !policyName.trim() || !company.trim()) {
       toast.error("Будь ласка, заповніть всі поля");
@@ -46,7 +57,16 @@ export default function NewCreatePolicyForm() {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
       />
-
+      <form className="form" onSubmit={handleSubmit}>
+          <div className="last-form-group-big">
+            <textarea
+              className="desc-input"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        </form>
       <button className="button" onClick={handleBtnClick}>
         ДАЛІ
       </button>
