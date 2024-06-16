@@ -32,7 +32,14 @@ export default function header() {
         </div>
         <div class="nav-links">
           <div class="search_text_button">Пошук полісу</div>
-          <div class="create_text_button">Створення полісу</div>
+          <div class="create_text_button">
+            <a
+              href="/newpolicy"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Створення полісу
+            </a>
+          </div>
           <div class="saved_text_button">
             <a
               href="/saved"

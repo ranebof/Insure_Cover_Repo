@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import diseaseList from "./response.json";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreatePolicy() {
   const [mList, setMlist] = useState([]);
@@ -420,6 +422,7 @@ export default function CreatePolicy() {
 
   return (
     <div className="list_of_medicine_con">
+      <ToastContainer />
       <div className="list_title">
         <span>Створення полісу</span>
         <span>Ліки</span>
