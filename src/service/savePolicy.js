@@ -1,27 +1,21 @@
-// const number = document.getElementById('number').value;
-// const name = document.getElementById('name').value;
-// const company = document.getElementById('company').value;
-// const description = document.getElementById('description').value;
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// const data = {
-//     number: number,
-//     name: name,
-//     company: company,
-//     description: description
-// };
+const API = "http://138.68.127.156:8000/api/policy/";
 
-// const savePolicy = (data) => {
-//     axios.post('https://your-server-endpoint/api/save', data)
-//     .then(response => {
-//         // Handle success
-//         console.log('Data saved successfully:', response.data);
-//         alert('Data saved successfully!');
-//     })
-//     .catch(error => {
-//         // Handle error
-//         console.error('There was an error saving the data:', error);
-//         alert('There was an error saving the data.');
-//     });
-// }
+const savePolicy = async (data) => {
+  try {
+    const response = await axios.post(API, data);
+    toast.success("Дані успішно збережені!");
+    return { data: response.data };
+  } catch (error) {
+    toast.error("Щось пішло не так!");
+  }
+};
 
+const savePolicyService = {
+  savePolicy,
+};
 
+export default savePolicyService;

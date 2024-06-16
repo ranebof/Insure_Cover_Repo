@@ -2,22 +2,16 @@ import "./dist/NewCreatePolicyForm.css";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import savePolicyService from "../../service/savePolicy";
 export default function NewCreatePolicyForm() {
   const [policyCode, setPolicyCode] = useState("");
   const [policyName, setPolicyName] = useState("");
   const [company, setCompany] = useState("");
-  const [diseases, setDiseases] = useState([]);
-  const [medicines, setMedicines] = useState([]);
   const [description, setDescription] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleBtnClick = async (event) => {
     event.preventDefault();
-    setShowPopup(true);
-  };
 
-  const handleBtnClick = () => {
     if (
       !policyCode.trim() ||
       !policyName.trim() ||
@@ -28,7 +22,24 @@ export default function NewCreatePolicyForm() {
       return;
     }
 
-    window.location.href = "/disease";
+    const data = {
+      number: policyCode,
+      name: policyName,
+      company: company,
+      description: description,
+    };
+
+    try {
+      const response = await savePolicyService.savePolicy(data);
+      if (response.success) {
+        toast.success("Дані успішно збережені!");
+        window.location.href = "/disease";
+      } else {
+        toast.error("Щось пішло не так!");
+      }
+    } catch (error) {
+      console.error("Error during save:", error);
+    }
   };
 
   return (
