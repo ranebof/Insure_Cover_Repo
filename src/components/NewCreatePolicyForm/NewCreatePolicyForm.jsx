@@ -29,17 +29,7 @@ export default function NewCreatePolicyForm() {
       description: description,
     };
 
-    try {
-      const response = await savePolicyService.savePolicy(data);
-      if (response.success) {
-        toast.success("Дані успішно збережені!");
-        window.location.href = "/disease";
-      } else {
-        toast.error("Щось пішло не так!");
-      }
-    } catch (error) {
-      console.error("Error during save:", error);
-    }
+    await savePolicyService.savePolicy(data);
   };
 
   return (

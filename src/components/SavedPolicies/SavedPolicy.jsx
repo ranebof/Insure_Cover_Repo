@@ -1,57 +1,74 @@
 import "./dist/SavedPolicy.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import savePolicyService from "../../service/savePolicy";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function SavedPolicy() {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedPolicy, setExpandedPolicy] = useState(null);
+  const [readedPolicies, setReadedPolicies] = useState([]);
+  const [editingPolicyId, setEditingPolicyId] = useState(null);
+  const [updatedPolicyData, setUpdatedPolicyData] = useState({
+    number: "",
+    name: "",
+    company: "",
+    description: "",
+  });
 
-  const togglePolicy = (policyCode) => {
-    setExpandedPolicy(expandedPolicy === policyCode ? null : policyCode);
+  useEffect(() => {
+    const fetchPolicies = async () => {
+      try {
+        const response = await savePolicyService.getPolicy();
+        setReadedPolicies(response);
+      } catch (error) {
+        toast.error("Помилка у зчитуванні даних!");
+      }
+    };
+    fetchPolicies();
+  }, [editingPolicyId]);
+
+  const togglePolicy = (id) => {
+    setExpandedPolicy(expandedPolicy === id ? null : id);
   };
+
+  const handleEditPolicy = (number) => {
+    setEditingPolicyId(number);
+    const policyToEdit = readedPolicies.find(
+      (policy) => policy.number === number
+    );
+    setUpdatedPolicyData(policyToEdit);
+  };
+
+  const handleUpdatePolicy = async () => {
+    await savePolicyService.updatePolicy(editingPolicyId, updatedPolicyData);
+    setEditingPolicyId(null);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedPolicyData({
+      ...updatedPolicyData,
+      [name]: value,
+    });
+  };
+
+  const filteredPolicies = readedPolicies.filter((policy) => {
+    const normalizedQuery = searchQuery.toLowerCase().trim();
+    return (
+      policy.number.toLowerCase().includes(normalizedQuery) ||
+      policy.name.toLowerCase().includes(normalizedQuery) ||
+      policy.company.toLowerCase().includes(normalizedQuery) ||
+      policy.description.toLowerCase().includes(normalizedQuery)
+    );
+  });
 
   function handleSearchChange(e) {
     setSearchQuery(e.target.value);
   }
 
-  const savedPolicies = [
-    {
-      policyCode: "ABC1234",
-      policyName: "Індивідуальне страхування",
-      diseases: [
-        { diseaseCode: "A0-A1", diseaseName: "Діабет" },
-        { diseaseCode: "A0-A2", diseaseName: "Гіпертонія" },
-      ],
-      medicines: [
-        { medicineCode: "A1", medicineName: "Кокс" },
-        { medicineCode: "A2", medicineName: "Ганджубас" },
-      ],
-      description: "Чел руку зламав рофл",
-      pdfFile: "some.pdf",
-    },
-    {
-      policyCode: "DEF5678",
-      policyName: "Загальне страхування",
-      diseases: [
-        { diseaseCode: "AB-AB2", diseaseName: "Діабет" },
-        { diseaseCode: "G12", diseaseName: "Гіпертонія" },
-      ],
-      medicines: [
-        { medicineCode: "A1", medicineName: "Кокс" },
-        { medicineCode: "A2", medicineName: "Ганджубас" },
-      ],
-      description: "Чел руку зламав рофл",
-      pdfFile: "some.pdf",
-    },
-  ];
-  const filteredSavedPolicies = savedPolicies.filter((policy) => {
-    const query = searchQuery.toLowerCase();
-    return (
-      policy.policyCode.toLowerCase().includes(query) ||
-      policy.policyName.toLowerCase().includes(query)
-    );
-  });
   return (
     <div className="policies-cont">
+      <ToastContainer />
       <div className="search_holder">
         <input
           className="search-bar"
@@ -61,13 +78,13 @@ export default function SavedPolicy() {
         />
       </div>
       <div className="saved-policies-list">
-        {filteredSavedPolicies.map((item) => (
-          <div className="savedListItem" key={item.policyCode}>
+        {filteredPolicies.map((item) => (
+          <div className="savedListItem" key={item.id}>
             <div
               className={`saved_item_holder ${
-                expandedPolicy === item.policyCode ? "expanded" : ""
+                expandedPolicy === item.id ? "expanded" : ""
               }`}
-              onClick={() => togglePolicy(item.policyCode)}
+              onClick={() => togglePolicy(item.id)}
               style={{ cursor: "pointer", fontWeight: "bold" }}
             >
               <div
@@ -75,52 +92,61 @@ export default function SavedPolicy() {
                   paddingLeft: "15px",
                 }}
               >
-                <span>{item.policyCode}</span>
-                <span style={{ marginLeft: "8vw" }}>{item.policyName}</span>
+                <span>{item.number}</span>
+                <span style={{ marginLeft: "8vw" }}>{item.name}</span>
               </div>
               <span
                 className={`x-icon ${
-                  expandedPolicy === item.policyCode ? "expanded" : ""
+                  expandedPolicy === item.id ? "expanded" : ""
                 }`}
               >
                 &#10005;
               </span>
             </div>
-            {expandedPolicy === item.policyCode && (
+            {expandedPolicy === item.id && (
               <div className="details">
                 <div>
                   <strong>Опис:</strong> {item.description}
                 </div>
                 <div>
-                  <strong>Хвороби:</strong>
-                  <ul>
-                    {item.diseases.map((disease) => (
-                      <li key={disease.diseaseCode}>
-                        {disease.diseaseCode} - {disease.diseaseName}
-                      </li>
-                    ))}
-                  </ul>
+                  <strong>Компанія:</strong> {item.company}
                 </div>
-                <div>
-                  <strong>Ліки:</strong>
-                  <ul>
-                    {item.medicines.map((medicine) => (
-                      <li key={medicine.medicineCode}>
-                        {medicine.medicineCode} - {medicine.medicineName}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <strong>PDF файл:</strong>{" "}
-                  <a
-                    href={item.pdfFile}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {item.pdfFile}
-                  </a>
-                </div>
+                <button onClick={() => handleEditPolicy(item.number)}>
+                  Edit
+                </button>
+                {editingPolicyId === item.number && (
+                  <div>
+                    <input
+                      type="text"
+                      name="number"
+                      value={updatedPolicyData.number}
+                      onChange={handleInputChange}
+                      placeholder="Номер полісу"
+                    />
+                    <input
+                      type="text"
+                      name="name"
+                      value={updatedPolicyData.name}
+                      onChange={handleInputChange}
+                      placeholder="Назва полісу"
+                    />
+                    <input
+                      type="text"
+                      name="company"
+                      value={updatedPolicyData.company}
+                      onChange={handleInputChange}
+                      placeholder="Компанія"
+                    />
+                    <input
+                      type="text"
+                      name="description"
+                      value={updatedPolicyData.description}
+                      onChange={handleInputChange}
+                      placeholder="Опис"
+                    />
+                    <button onClick={handleUpdatePolicy}>Save</button>
+                  </div>
+                )}
               </div>
             )}
           </div>
