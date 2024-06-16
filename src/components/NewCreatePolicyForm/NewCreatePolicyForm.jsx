@@ -48,7 +48,16 @@ export default function NewCreatePolicyForm() {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
       />
-
+      <form className="form" onSubmit={handleSubmit}>
+          <div className="last-form-group-big">
+            <textarea
+              className="desc-input"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        </form>
       <button className="button" onClick={handleBtnClick}>
         ДАЛІ
       </button>
