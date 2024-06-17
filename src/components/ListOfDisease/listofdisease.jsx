@@ -291,6 +291,7 @@ export default function CreatePolicy() {
 
   function handelBtnClick() {
     window.location.href = "/medicine";
+    
   }
 
   const filterList = (list, query) => {
