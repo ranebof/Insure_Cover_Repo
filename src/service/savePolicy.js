@@ -16,7 +16,6 @@ const savePolicy = async (data) => {
 const getPolicy = async () => {
   try {
     const response = await axios.get(API);
-    toast.success("Данні зчитані!");
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -33,10 +32,20 @@ const updatePolicy = async (id, updatedData) => {
     toast.error("Щось пішло не так!");
   }
 };
+const deletePolicy = async (id) => {
+  try {
+    const response = await axios.delete(`${API}${id}/`);
+    toast.success("Поліс видалено!");
+    return response.data;
+  } catch (error) {
+    toast.error("Щось пішло не так!");
+  }
+};
 const savePolicyService = {
   savePolicy,
   getPolicy,
   updatePolicy,
+  deletePolicy,
 };
 
 export default savePolicyService;

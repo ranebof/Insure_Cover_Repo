@@ -57,24 +57,21 @@ var getPolicy = function getPolicy() {
 
         case 3:
           response = _context2.sent;
-
-          _reactToastify.toast.success("Данні зчитані!");
-
           console.log(response.data);
           return _context2.abrupt("return", response.data);
 
-        case 9:
-          _context2.prev = 9;
+        case 8:
+          _context2.prev = 8;
           _context2.t0 = _context2["catch"](0);
 
           _reactToastify.toast.error("Щось пішло не так!");
 
-        case 12:
+        case 11:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  }, null, null, [[0, 8]]);
 };
 
 var updatePolicy = function updatePolicy(id, updatedData) {
@@ -108,10 +105,42 @@ var updatePolicy = function updatePolicy(id, updatedData) {
   }, null, null, [[0, 8]]);
 };
 
+var deletePolicy = function deletePolicy(id) {
+  var response;
+  return regeneratorRuntime.async(function deletePolicy$(_context4) {
+    while (1) {
+      switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          _context4.next = 3;
+          return regeneratorRuntime.awrap(_axios["default"]["delete"]("".concat(API).concat(id, "/")));
+
+        case 3:
+          response = _context4.sent;
+
+          _reactToastify.toast.success("Поліс видалено!");
+
+          return _context4.abrupt("return", response.data);
+
+        case 8:
+          _context4.prev = 8;
+          _context4.t0 = _context4["catch"](0);
+
+          _reactToastify.toast.error("Щось пішло не так!");
+
+        case 11:
+        case "end":
+          return _context4.stop();
+      }
+    }
+  }, null, null, [[0, 8]]);
+};
+
 var savePolicyService = {
   savePolicy: savePolicy,
   getPolicy: getPolicy,
-  updatePolicy: updatePolicy
+  updatePolicy: updatePolicy,
+  deletePolicy: deletePolicy
 };
 var _default = savePolicyService;
 exports["default"] = _default;

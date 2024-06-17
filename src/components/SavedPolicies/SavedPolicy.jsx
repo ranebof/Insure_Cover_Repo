@@ -14,16 +14,15 @@ export default function SavedPolicy() {
     company: "",
     description: "",
   });
-
+  const fetchPolicies = async () => {
+    try {
+      const response = await savePolicyService.getPolicy();
+      setReadedPolicies(response);
+    } catch (error) {
+      toast.error("Помилка у зчитуванні даних!");
+    }
+  };
   useEffect(() => {
-    const fetchPolicies = async () => {
-      try {
-        const response = await savePolicyService.getPolicy();
-        setReadedPolicies(response);
-      } catch (error) {
-        toast.error("Помилка у зчитуванні даних!");
-      }
-    };
     fetchPolicies();
   }, [editingPolicyId]);
 
@@ -39,11 +38,17 @@ export default function SavedPolicy() {
     setUpdatedPolicyData(policyToEdit);
   };
 
-  const handleUpdatePolicy = async () => {
+  const updatePolicy = async () => {
     await savePolicyService.updatePolicy(editingPolicyId, updatedPolicyData);
     setEditingPolicyId(null);
+    setExpandedPolicy(false);
   };
-
+  const deletePolicy = async (id) => {
+    await savePolicyService.deletePolicy(id);
+    setEditingPolicyId(null);
+    setExpandedPolicy(false);
+    fetchPolicies();
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedPolicyData({
@@ -106,45 +111,70 @@ export default function SavedPolicy() {
             {expandedPolicy === item.id && (
               <div className="details">
                 <div>
-                  <strong>Опис:</strong> {item.description}
-                </div>
-                <div>
                   <strong>Компанія:</strong> {item.company}
                 </div>
-                <button onClick={() => handleEditPolicy(item.number)}>
-                  Edit
-                </button>
+                <div className="details-desc-cont">
+                  <div className="divider"></div>
+                  <div className="details-desc">
+                    <strong>Опис:</strong>
+                    <textarea className="desc-output">
+                      {item.description}
+                    </textarea>
+                  </div>
+                </div>
+                <div className="edit_button_cont">
+                  <button
+                    className="edit_button"
+                    onClick={() => handleEditPolicy(item.number)}
+                  >
+                    Редагувати
+                  </button>
+                  <button
+                    className="edit_button"
+                    onClick={() => deletePolicy(item.number)}
+                  >
+                    Видалити
+                  </button>
+                </div>
                 {editingPolicyId === item.number && (
-                  <div>
-                    <input
-                      type="text"
-                      name="number"
-                      value={updatedPolicyData.number}
-                      onChange={handleInputChange}
-                      placeholder="Номер полісу"
-                    />
-                    <input
-                      type="text"
-                      name="name"
-                      value={updatedPolicyData.name}
-                      onChange={handleInputChange}
-                      placeholder="Назва полісу"
-                    />
-                    <input
-                      type="text"
-                      name="company"
-                      value={updatedPolicyData.company}
-                      onChange={handleInputChange}
-                      placeholder="Компанія"
-                    />
-                    <input
-                      type="text"
-                      name="description"
-                      value={updatedPolicyData.description}
-                      onChange={handleInputChange}
-                      placeholder="Опис"
-                    />
-                    <button onClick={handleUpdatePolicy}>Save</button>
+                  <div className="edit-modal">
+                    <div className="modal-content">
+                      <input
+                        className="input-field"
+                        type="text"
+                        name="number"
+                        value={updatedPolicyData.number}
+                        onChange={handleInputChange}
+                        placeholder="Номер полісу"
+                      />
+                      <input
+                        type="text"
+                        className="input-field"
+                        name="name"
+                        value={updatedPolicyData.name}
+                        onChange={handleInputChange}
+                        placeholder="Назва полісу"
+                      />
+                      <input
+                        type="text"
+                        className="input-field"
+                        name="company"
+                        value={updatedPolicyData.company}
+                        onChange={handleInputChange}
+                        placeholder="Компанія"
+                      />
+                      <textarea
+                        type="text"
+                        className="desc-input"
+                        name="description"
+                        value={updatedPolicyData.description}
+                        onChange={handleInputChange}
+                        placeholder="Опис"
+                      />
+                      <button className="edit_button" onClick={updatePolicy}>
+                        ЗБЕРЕГТИ
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
