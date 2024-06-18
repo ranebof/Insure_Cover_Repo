@@ -9,17 +9,17 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var API = "api/db/icd10classification/<str:policy_number>/";
+var API_URL = 'api/db/icd10classification/<str:policy_number>/';
 
-var saveSelectedData = function saveSelectedData(selectedData) {
+var saveSelectedDiseases = function saveSelectedDiseases(selectedDiseases) {
   var response;
-  return regeneratorRuntime.async(function saveSelectedData$(_context) {
+  return regeneratorRuntime.async(function saveSelectedDiseases$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return regeneratorRuntime.awrap(_axios["default"].post("".concat(API), selectedData));
+          return regeneratorRuntime.awrap(_axios["default"].post("".concat(API_URL), selectedDiseases));
 
         case 3:
           response = _context.sent;
@@ -28,9 +28,10 @@ var saveSelectedData = function saveSelectedData(selectedData) {
         case 7:
           _context.prev = 7;
           _context.t0 = _context["catch"](0);
-          console.error('Error saving selected data:', _context.t0);
+          console.error('Error saving selected diseases:', _context.t0);
+          throw _context.t0;
 
-        case 10:
+        case 11:
         case "end":
           return _context.stop();
       }
@@ -38,5 +39,5 @@ var saveSelectedData = function saveSelectedData(selectedData) {
   }, null, null, [[0, 7]]);
 };
 
-var _default = saveSelectedData;
+var _default = saveSelectedDiseases;
 exports["default"] = _default;

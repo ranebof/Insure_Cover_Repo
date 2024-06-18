@@ -1,14 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API = "api/db/icd10classification/<str:policy_number>/"; 
+const API_URL = 'api/db/icd10classification/<str:policy_number>/'; 
 
-const saveSelectedData = async (selectedData) => {
+const saveSelectedDiseases = async (selectedDiseases) => {
   try {
-    const response = await axios.post(`${API}`, selectedData);
+    const response = await axios.post(`${API_URL}`, selectedDiseases);
     return response.data;
   } catch (error) {
-    console.error('Error saving selected data:', error);
+    console.error('Error saving selected diseases:', error);
+    throw error;
   }
 };
 
-export default saveSelectedData;
+export default saveSelectedDiseases;
