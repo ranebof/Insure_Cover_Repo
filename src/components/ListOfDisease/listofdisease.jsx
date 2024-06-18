@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import saveSelectedData from "../../service/diseaseSave.js";
 import "./dist/listofdisease.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -290,7 +291,14 @@ export default function CreatePolicy() {
   }
 
   function handelBtnClick() {
-    window.location.href = "/medicine";
+    //window.location.href = "/medicine";
+
+    const selectedData = createSelectedData(mList);
+    saveSelectedData(selectedData).then(response => {
+    console.log(response);
+  }).catch(error => {
+    console.error('Error saving selected data:', error);
+  });
     
   }
 
@@ -327,6 +335,32 @@ export default function CreatePolicy() {
   };
 
   const filteredList = filterList(mList, searchQuery.toLowerCase());
+
+
+  function createSelectedData(mList) {
+    return mList.flatMap(item => [
+      {
+        code: item.code,
+        name: item.name,
+        checked: item.checked,
+        subcategories: item.subcategories.filter(subItem => subItem.checked).map(subItem => ({
+          code: subItem.code,
+          name: subItem.name,
+          checked: subItem.checked,
+          subsubcategories: subItem.subsubcategories.filter(subSubItem => subSubItem.checked).map(subSubItem => ({
+            code: subSubItem.code,
+            name: subSubItem.name,
+            checked: subSubItem.checked,
+            codes: subSubItem.codes.filter(codeItem => codeItem.checked).map(codeItem => ({
+              code: codeItem.code,
+              name: codeItem.name,
+              checked: codeItem.checked
+            }))
+          }))
+        }))
+      }]
+    ).flat();
+  }
 
   return (
     <div className="list_of_medicine_con">

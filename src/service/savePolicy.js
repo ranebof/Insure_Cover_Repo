@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const API = "http://138.68.127.156:8000/api/db/policy/";
 
+
 const savePolicy = async (data) => {
   try {
     await axios.post(API, data);
