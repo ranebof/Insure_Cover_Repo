@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import authService from "../../service/login";
 import "./dist/logcard.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function LogCard() {
   const [isClicked, setIsClicked] = useState(false);
@@ -10,7 +11,10 @@ export default function LogCard() {
   const [email, setEmail] = useState("");
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
   const [error, setError] = useState("");
-
+  const firstName = "asd";
+  const lastName = "asd";
+  const phone_number = "123-456-7890";
+  const [loading, setLoading] = useState(false);
   const toggleAuthCard = () => {
     setIsRightPanelActive(!isRightPanelActive);
   };
@@ -29,31 +33,36 @@ export default function LogCard() {
     if (!validateInputs()) return;
 
     try {
-      await authService.register({
-        username: userName,
-        password: pass,
-        email: email,
-      });
+      await authService.register(
+        {
+          username: userName,
+          password: pass,
+          email: email,
+        },
+        firstName,
+        lastName,
+        email,
+        phone_number
+      );
     } catch (error) {
       console.error("Error during registration:", error);
     }
   };
 
   const logFunct = async (e) => {
+    setLoading(true);
     e.preventDefault();
     if (!validateInputs()) return;
 
     try {
       const response = await authService.login(userName, pass);
-      if (response.success) {
-        console.log("Hello!");
-      } else {
-        console.log("Login failed: Incorrect username or password");
-      }
+      console.log(response);
+      window.location.href = "/newpolicy";
     } catch (error) {
+      toast.error("Неправильні дані!");
       console.error("Error during login:", error);
     } finally {
-      window.location.href = "/newpolicy";
+      setLoading(false);
     }
   };
 
@@ -69,9 +78,13 @@ export default function LogCard() {
 
   return (
     <div className="main_container">
+      <ToastContainer />
       <div
         className={`auth-container ${
-          isRightPanelActive ? "right-panel-active" : ""}`} id="auth-container">
+          isRightPanelActive ? "right-panel-active" : ""
+        }`}
+        id="auth-container"
+      >
         <div className="auth-form-container sign-up-container">
           <form className="auth-form" action="#">
             <h1>Створити акаунт</h1>
