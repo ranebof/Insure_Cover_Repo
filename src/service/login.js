@@ -2,13 +2,15 @@ import axios from "axios";
 
 const API = "http://138.68.127.156:8000/";
 
-const register = (user, password, email) => {
+const register = (user, first_name, last_name, email, phone_number) => {
   return axios.post(
     "http://138.68.127.156:8000/api/auth/register/",
     {
       user,
-      password,
+      first_name,
+      last_name,
       email,
+      phone_number,
     },
     {
       headers: {
